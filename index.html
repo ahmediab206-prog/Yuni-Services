@@ -25,7 +25,7 @@
     body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px 15px; }
     button { font-family: inherit; }
     img { display: block; }
- 
+
     /* ── الهيدر ── */
     .top-header {
       width: 100%; max-width: 1300px; background: var(--card-bg);
@@ -50,13 +50,13 @@
     .logout-btn { background: #FCE8E6; color: var(--danger); border: 1px solid #F5C6CB; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 700; }
     .staff-login-btn { background: transparent; border: 1px solid var(--border-color); color: #8A8470; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
     .staff-login-btn:hover { color: var(--primary-green); border-color: var(--primary-green); }
- 
+
     .main-wrapper { width: 100%; max-width: 1300px; }
     .view-page { display: none; }
     .view-page.active { display: block; }
     .card { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: 0 12px 30px rgba(24, 66, 50, 0.08); border: 1px solid var(--border-color); position: relative; }
     @media (max-width: 650px) { .card { padding: 18px; border-radius: 16px; } body { padding: 12px 10px; } .top-header { padding: 12px 14px; } }
- 
+
     /* ── عام ── */
     .page-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
     .page-head h2 { color: var(--primary-green); font-size: 21px; display: flex; align-items: center; gap: 9px; }
@@ -90,7 +90,7 @@
     .empty i { font-size: 34px; display: block; margin-bottom: 12px; color: var(--border-color); }
     .loading { text-align: center; color: var(--primary-green); padding: 40px; font-weight: 700; }
     .hidden-badge { background: #EEE; color: #666; border-radius: 10px; padding: 2px 8px; font-size: 11px; font-weight: 700; white-space: nowrap; }
- 
+
     /* ── كروت الكتالوج ── */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
     @media (max-width: 650px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
@@ -111,7 +111,7 @@
     .section-label { font-size: 15px; font-weight: 700; color: var(--primary-green); margin: 26px 0 12px; display: flex; align-items: center; gap: 8px; }
     .section-label:first-child { margin-top: 0; }
     .folder-intro { color: #6B6655; font-size: 14px; line-height: 1.8; margin: -6px 0 16px; white-space: pre-line; }
- 
+
     /* ── صفحة الخدمة ── */
     .svc-page { max-width: 860px; margin: 0 auto; }
     .gallery { border-radius: 16px; overflow: hidden; background: #F1EFEA; border: 1px solid var(--border-color); }
@@ -142,7 +142,7 @@
     .svc-box.notes { background: #FFF8E7; border-color: #EBD9A8; }
     .svc-box.notes h3 { color: #8A6420; }
     .svc-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
- 
+
     /* ── الجداول ── */
     .table-container { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border-color); }
     table { width: 100%; border-collapse: collapse; text-align: right; background: #FFF; }
@@ -159,7 +159,7 @@
     .filters input, .filters select { background: #FFF; padding: 10px 12px; font-size: 14px; }
     .msg-preview { margin-top: 16px; background: #F4F1E8; border: 1px dashed var(--border-color); border-radius: 12px; padding: 14px 16px; font-size: 13px; line-height: 1.8; white-space: pre-wrap; max-height: 320px; overflow: auto; color: #3F433F; }
     .msg-preview-head { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; font-weight: 700; color: var(--primary-green); font-size: 14px; }
- 
+
     /* ── الإدارة ── */
     .mg-row-name { display: flex; align-items: center; gap: 12px; }
     .mg-thumb { width: 52px; height: 40px; border-radius: 8px; overflow: hidden; background: var(--light-green); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--primary-green); }
@@ -170,7 +170,7 @@
     .mg-sub { font-size: 12px; color: #9A937D; margin-top: 2px; }
     .mg-actions { display: flex; gap: 5px; justify-content: flex-end; }
     tr.is-hidden td { opacity: .6; }
- 
+
     /* ── النوافذ ── */
     .modal-overlay { position: fixed; inset: 0; background: rgba(24, 66, 50, 0.55); backdrop-filter: blur(6px); display: none; justify-content: center; align-items: flex-start; z-index: 1000; padding: 30px 15px; overflow-y: auto; }
     .modal-overlay.active { display: flex; }
@@ -200,13 +200,13 @@
     .media-add input { flex: 1 1 200px; }
     .cover-box { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
     .cover-box .media-item { width: 130px; }
- 
+
     /* ── دخول ── */
     .login-card { max-width: 400px; text-align: center; }
     .login-card h3 { justify-content: center; }
     .login-card p { color: #777; font-size: 13px; margin: -8px 0 18px; }
- 
- 
+
+
     /* ── السجل ── */
     .log-table td.details { white-space: pre-line; line-height: 1.75; min-width: 280px; font-size: 13px; color: #3F433F; }
     .log-table td.time { white-space: nowrap; color: #6B6655; font-size: 13px; direction: ltr; text-align: right; }
@@ -216,13 +216,13 @@
     .lg-in { background: #E0F2F1; color: #00695C; }
     .m-path { display: none; font-size: 11px; color: #9A937D; margin-top: 2px; }
     .count-note { font-size: 12px; color: #9A937D; margin-top: 10px; }
- 
+
     /* ═══ تابلت ═══ */
     @media (max-width: 900px) {
       .grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
       .stage { height: clamp(280px, 55vh, 480px); }
     }
- 
+
     /* ═══ موبايل ═══ */
     @media (max-width: 700px) {
       .top-header { gap: 10px; }
@@ -231,7 +231,7 @@
       .nav-btn { flex: 1 1 0; min-width: 0; justify-content: center; padding: 9px 4px; font-size: 12.5px; white-space: nowrap; }
       .nav-btn i { display: none; }
       .user-profile-bar { gap: 7px; font-size: 12px; }
- 
+
       .page-head h2 { font-size: 18px; }
       .page-head > div { width: 100%; }
       .page-head > div .btn { flex: 1; }
@@ -242,7 +242,7 @@
       .filters .f.half { flex-basis: calc(50% - 4px); }
       .filters .f, .filters input, .filters select { min-width: 0; }
       .filters input[type="date"] { padding: 10px 8px; font-size: 13px; }
- 
+
       .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
       .tile { border-radius: 12px; }
       .tile.folder .tile-title { padding: 10px; }
@@ -251,7 +251,7 @@
       .tile-body b { font-size: 13.5px; }
       .tile-price { font-size: 13.5px; }
       .section-label { margin: 20px 0 10px; }
- 
+
       .stage { height: min(110vw, 66vh); }
       .stage-nav { width: 34px; height: 34px; font-size: 13px; }
       .thumbs { gap: 6px; padding: 8px; }
@@ -263,11 +263,11 @@
       .svc-box { padding: 13px 14px; }
       .svc-box p { font-size: 14px; }
       .svc-actions .btn { flex: 1; }
- 
+
       th, td { padding: 9px 10px; font-size: 13px; }
       .prices-table th:first-child, .prices-table td:first-child { display: none; }
       .prices-table .m-path { display: block; }
- 
+
       /* جدول الإدارة والسجل بيتحولوا لكروت */
       .mg-table thead, .log-table thead { display: none; }
       .mg-table, .mg-table tbody, .log-table, .log-table tbody { display: block; }
@@ -280,7 +280,7 @@
       .mg-table .icon-btn { width: 38px; height: 38px; }
       .log-table td.details { grid-column: 1 / -1; min-width: 0; }
       .log-table td.time { grid-column: 1 / -1; order: -1; font-size: 12px; }
- 
+
       .modal-overlay { padding: 10px; }
       .modal-card { padding: 18px; border-radius: 14px; }
       .modal-card h3 { font-size: 17px; margin-bottom: 14px; }
@@ -295,13 +295,13 @@
     .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--primary-green); color: #FFF; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 14px; box-shadow: 0 10px 25px rgba(0,0,0,.2); opacity: 0; pointer-events: none; transition: all .3s; z-index: 3000; max-width: 90vw; text-align: center; }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
     .toast.err { background: var(--danger); }
- 
+
     footer { margin-top: 35px; padding: 15px; text-align: center; font-size: 13px; color: var(--primary-green); display: flex; align-items: center; justify-content: center; gap: 10px; border-top: 1px solid var(--border-color); width: 100%; max-width: 1300px; flex-wrap: wrap; }
     .whatsapp-btn { display: inline-flex; align-items: center; gap: 4px; background-color: var(--whatsapp-green); color: #FFFFFF; padding: 4px 10px; border-radius: 14px; text-decoration: none; font-weight: 600; font-size: 11px; }
   </style>
 </head>
 <body>
- 
+
   <!-- الهيدر -->
   <header class="top-header">
     <div class="header-logo" onclick="go('')">
@@ -316,16 +316,16 @@
     </nav>
     <div class="user-profile-bar" id="userBar"></div>
   </header>
- 
+
   <div class="main-wrapper">
- 
+
     <!-- ═══ الخدمات (العملاء + الكل) ═══ -->
     <section id="pageCatalog" class="view-page active">
       <div class="card">
         <div id="catalogBody"><div class="loading"><i class="fas fa-spinner fa-spin"></i> جاري تحميل الخدمات...</div></div>
       </div>
     </section>
- 
+
     <!-- ═══ قائمة الأسعار (الموظفين) ═══ -->
     <section id="pagePrices" class="view-page">
       <div class="card">
@@ -350,7 +350,7 @@
         <div class="msg-preview" id="prPreview"></div>
       </div>
     </section>
- 
+
     <!-- ═══ إدارة الخدمات (المديرين) ═══ -->
     <section id="pageManage" class="view-page">
       <div class="card">
@@ -372,7 +372,7 @@
         </div>
       </div>
     </section>
- 
+
     <!-- ═══ السجل (المديرين) ═══ -->
     <section id="pageLog" class="view-page">
       <div class="card">
@@ -397,14 +397,14 @@
       </div>
     </section>
   </div>
- 
+
   <footer>
     <span>تطوير وبرمجة: <strong>أحمد ياسر دياب</strong></span>
     <a href="https://wa.me/201091936251" target="_blank" class="whatsapp-btn">
       <i class="fab fa-whatsapp"></i> تواصل عبر واتساب
     </a>
   </footer>
- 
+
   <!-- دخول الموظفين -->
   <div class="modal-overlay" id="loginModal">
     <div class="modal-card login-card">
@@ -421,7 +421,7 @@
       </form>
     </div>
   </div>
- 
+
   <!-- مجلد (Category) -->
   <div class="modal-overlay" id="catModal">
     <div class="modal-card">
@@ -450,7 +450,7 @@
       </div>
     </div>
   </div>
- 
+
   <!-- خدمة (Service) -->
   <div class="modal-overlay" id="svcModal">
     <div class="modal-card" style="max-width:680px;">
@@ -466,11 +466,11 @@
           <div class="media-list" id="svcMediaList"></div>
           <div class="media-add">
             <button type="button" class="btn alt" onclick="document.getElementById('svcMediaInput').click()"><i class="fas fa-upload"></i> رفع صور / فيديو</button>
-            <input type="text" id="svcYoutube" placeholder="أو لينك يوتيوب...">
-            <button type="button" class="btn alt" onclick="addYoutube()"><i class="fab fa-youtube"></i> إضافة</button>
+            <input type="text" id="svcYoutube" placeholder="أو لينك صورة / يوتيوب...">
+            <button type="button" class="btn alt" onclick="addYoutube()"><i class="fas fa-link"></i> إضافة</button>
           </div>
           <input type="file" id="svcMediaInput" accept="image/*,video/*" multiple style="display:none;" onchange="uploadServiceMedia(this)">
-          <div class="hint">أول عنصر هو الغلاف. الفيديو لحد 25 ميجا، وللأكبر استخدم يوتيوب.</div>
+          <div class="hint">أول عنصر هو الغلاف. الفيديو لحد 25 ميجا، وللأكبر استخدم يوتيوب. لينك الصورة لازم يكون للصورة نفسها (كليك يمين على الصورة ← نسخ عنوان الصورة).</div>
         </div>
         <div class="field"><label>الوصف</label><textarea id="svcDesc" rows="4" placeholder="وصف الخدمة للعميل..."></textarea></div>
         <div class="field"><label>مناسبة لمين</label><textarea id="svcSuitable" rows="2" placeholder="مثال: البشرة الدهنية، من سن 18..."></textarea></div>
@@ -484,9 +484,9 @@
       </div>
     </div>
   </div>
- 
+
   <div class="toast" id="toast"></div>
- 
+
   <script>
     // ═══════════════════════════════════════════════════════════════
     // الإعدادات — حط لينك الـ Web App بتاع السكريبت هنا
@@ -495,7 +495,7 @@
     const PRICE_MSG_TITLE = 'قائمة أسعار خدمات YUNI';
     const CURRENCY = 'ج.م';
     const MAX_VIDEO_MB = 25;
- 
+
     // ═══════════════════════════ الحالة ═══════════════════════════
     let authUser = null;
     let DATA = { categories: [], services: [] };
@@ -504,7 +504,7 @@
     let route = { page: 'catalog', id: '' };
     let catalogSearch = '';
     let galleryIndex = 0;
- 
+
     // ═══════════════════════════ أدوات ═══════════════════════════
     function esc(v) { return String(v === null || v === undefined ? '' : v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
     function store(key, val) { try { if (val === undefined) return localStorage.getItem(key); if (val === null) localStorage.removeItem(key); else localStorage.setItem(key, val); } catch (_) { return null; } }
@@ -521,14 +521,14 @@
       return String(p);
     }
     function isNumericPrice(p) { return p !== '' && p !== null && p !== undefined && !isNaN(Number(p)); }
- 
+
     function apiPost(payload) {
       return fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(Object.assign({}, payload, { token: store('yuni_svc_token') || '' })) })
         .then(r => r.json())
         .then(res => { if (res.status !== 'success') throw new Error(res.message || 'حدث خطأ'); return res; });
     }
- 
+
     // ═══════════════════════════ روابط الصور ═══════════════════════════
     function driveImg(id, w) { return 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(id) + '&sz=w' + (w || 800); }
     function driveImgAlt(id, w) { return 'https://lh3.googleusercontent.com/d/' + encodeURIComponent(id) + '=w' + (w || 800); }
@@ -554,7 +554,7 @@
       if (m) return m[1];
       return /^[\w-]{11}$/.test(s) ? s : '';
     }
- 
+
     // ═══════════════════════════ فهرسة البيانات ═══════════════════════════
     function buildIndex() {
       const cat = {}, kids = {}, svcOf = {}, svc = {};
@@ -604,7 +604,7 @@
       for (const k of childCats(catId, all)) { const m = firstImageForCat(k.id, all); if (m) return m; }
       return null;
     }
- 
+
     // ═══════════════════════════ التحميل ═══════════════════════════
     async function loadCatalog(force) {
       if (!SCRIPT_URL || SCRIPT_URL.indexOf('PUT_YOUR') === 0) {
@@ -632,7 +632,7 @@
       renderHeader();
       render();
     }
- 
+
     // ═══════════════════════════ التنقل ═══════════════════════════
     function go(path) { if (location.hash.replace(/^#\/?/, '') === path) render(); else location.hash = path ? '#/' + path : ''; }
     function parseRoute() {
@@ -646,7 +646,7 @@
       return { page: 'catalog', id: '' };
     }
     window.addEventListener('hashchange', () => { route = parseRoute(); render(); window.scrollTo({ top: 0 }); });
- 
+
     function render() {
       route = parseRoute();
       if (route.page === 'prices' && !isStaff()) route = { page: 'catalog', id: '' };
@@ -665,7 +665,7 @@
       else if (route.page === 'service') renderService(route.id);
       else renderFolder(route.id);
     }
- 
+
     function renderHeader() {
       const bar = document.getElementById('userBar');
       document.getElementById('navTabs').classList.toggle('show', isStaff());
@@ -679,7 +679,7 @@
         bar.innerHTML = '<button class="staff-login-btn" onclick="openLogin()"><i class="fas fa-user-lock"></i> دخول الموظفين</button>';
       }
     }
- 
+
     // ═══════════════════════════ واجهة العملاء ═══════════════════════════
     function crumbsHtml(catId, linkPrefix, lastIsLink) {
       const parts = pathOf(catId);
@@ -691,7 +691,7 @@
       });
       return html;
     }
- 
+
     function folderTile(c) {
       const m = firstImageForCat(c.id, false);
       const n = countDeep(c.id, false);
@@ -707,7 +707,7 @@
         + '<div class="tile-body">' + (showPath ? '<span class="tile-path">' + esc(pathText(s.category)) + '</span>' : '')
         + '<b>' + esc(s.name) + '</b><span class="tile-price">' + esc(priceText(s.price)) + '</span></div></a>';
     }
- 
+
     function renderFolder(catId) {
       const body = document.getElementById('catalogBody');
       if (catId && (!IDX.cat[catId] || (!isManager() && !IDX.catVisible(catId)))) { body.innerHTML = '<div class="empty"><i class="fas fa-folder-open"></i>القسم غير متاح.<br><br><button class="btn alt" onclick="go(\'\')">الرجوع للرئيسية</button></div>'; return; }
@@ -743,7 +743,7 @@
       if (!folders.length && !services.length) html += '<div class="empty"><i class="fas fa-box-open"></i>' + (catId ? 'لا توجد خدمات في هذا القسم حالياً' : 'لا توجد خدمات حالياً') + '</div>';
       box.innerHTML = html;
     }
- 
+
     function renderService(id) {
       const body = document.getElementById('catalogBody');
       const s = IDX.svc[id];
@@ -762,7 +762,7 @@
       body.innerHTML = html;
       renderGallery(s);
     }
- 
+
     function renderGallery(s) {
       const g = document.getElementById('gallery');
       if (!g) return;
@@ -811,13 +811,13 @@
       if (navigator.share) { navigator.share({ title: s ? s.name : 'Yuni', url: url }).catch(() => {}); return; }
       copyText(url).then(() => toast('تم نسخ رابط الخدمة'));
     }
- 
+
     // ═══════════════════════════ قائمة الأسعار (الموظفين) ═══════════════════════════
     function renderPricesPage() {
       const sel = document.getElementById('prFolder');
       const cur = sel.value;
       sel.innerHTML = '<option value="">كل الخدمات</option>' + treeOrder(false).map(x =>
-        '<option value="' + esc(x.c.id) + '">' + '   '.repeat(x.depth) + esc(x.c.name) + '</option>').join('');
+        '<option value="' + esc(x.c.id) + '">' + '   '.repeat(x.depth) + esc(x.c.name) + '</option>').join('');
       sel.value = IDX.catVisible(cur) ? cur : '';
       renderPrices();
     }
@@ -876,7 +876,7 @@
       if (!msg) { toast('لا توجد خدمات لإرسالها', true); return; }
       window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
     }
- 
+
     // ═══════════════════════════ الإدارة (المديرين) ═══════════════════════════
     function renderManage() {
       const catId = (route.id && IDX.cat[route.id]) ? route.id : '';
@@ -923,11 +923,11 @@
       document.getElementById('mgBody').innerHTML = html || '<tr><td colspan="4"><div class="empty"><i class="fas fa-folder-open"></i>'
         + (catId ? 'المجلد فاضي — أضف مجلد فرعي أو خدمة' : 'ابدأ بإضافة أول مجلد (مثال: SPA أو Laser)') + '</div></td></tr>';
     }
- 
+
     function folderOptions(selected, excludeId, rootLabel) {
       let html = rootLabel ? '<option value="">' + esc(rootLabel) + '</option>' : '<option value="">-- اختر المجلد --</option>';
       treeOrder(true, excludeId).forEach(x => {
-        html += '<option value="' + esc(x.c.id) + '"' + (x.c.id === selected ? ' selected' : '') + '>' + '   '.repeat(x.depth) + esc(x.c.name) + (x.c.active ? '' : ' (مخفي)') + '</option>';
+        html += '<option value="' + esc(x.c.id) + '"' + (x.c.id === selected ? ' selected' : '') + '>' + '   '.repeat(x.depth) + esc(x.c.name) + (x.c.active ? '' : ' (مخفي)') + '</option>';
       });
       return html;
     }
@@ -962,7 +962,7 @@
       if (!s || !confirm('حذف الخدمة "' + s.name + '" وكل صورها؟')) return;
       quickAction({ action: 'deleteService', id }, 'تم حذف الخدمة');
     }
- 
+
     // ── نافذة المجلد
     let catEdit = { id: '', cover: '' };
     function openCategoryModal(id) {
@@ -1004,7 +1004,7 @@
         active: document.getElementById('catActive').checked
       } }, () => { closeModal('catModal'); toast('تم حفظ المجلد'); });
     }
- 
+
     // ── نافذة الخدمة
     let svcEdit = { id: '', media: [], uploading: 0 };
     function openServiceModal(id) {
@@ -1039,14 +1039,20 @@
     }
     function moveSvcMedia(i, d) { const a = svcEdit.media, j = i + d; [a[i], a[j]] = [a[j], a[i]]; renderSvcMedia(); }
     function removeSvcMedia(i) { svcEdit.media.splice(i, 1); renderSvcMedia(); }
-    function addYoutube() {
+    // لينك يوتيوب بيتضاف على طول — لينك صورة السكريبت بيحملها ويرفعها على Drive
+    async function addYoutube() {
       const inp = document.getElementById('svcYoutube');
-      const id = youtubeId(inp.value);
-      if (!id) { showErr('svcError', 'لينك يوتيوب غير صحيح.'); return; }
+      const val = inp.value.trim();
       showErr('svcError', '');
-      svcEdit.media.push({ t: 'youtube', id });
+      if (!val) return;
+      const id = youtubeId(val);
+      if (id) { svcEdit.media.push({ t: 'youtube', id }); inp.value = ''; renderSvcMedia(); return; }
+      if (!/^https?:\/\/\S+$/i.test(val)) { showErr('svcError', 'اللينك غير صحيح.'); return; }
       inp.value = '';
-      renderSvcMedia();
+      svcEdit.uploading++; renderSvcMedia();
+      try { svcEdit.media.push((await apiPost({ action: 'importMediaUrl', url: val })).media); }
+      catch (e) { showErr('svcError', e.message || 'تعذر تحميل الصورة'); inp.value = val; }
+      finally { svcEdit.uploading--; renderSvcMedia(); }
     }
     async function uploadServiceMedia(input) {
       const files = Array.from(input.files || []);
@@ -1072,7 +1078,7 @@
         active: document.getElementById('svcActive').checked
       } }, () => { closeModal('svcModal'); toast('تم حفظ الخدمة'); });
     }
- 
+
     // ── رفع الملفات: الصور بتتصغر قبل الرفع، الفيديو لحد MAX_VIDEO_MB
     function readAsBase64(blob) {
       return new Promise((resolve, reject) => {
@@ -1111,13 +1117,13 @@
       const res = await apiPost({ action: 'uploadMedia', name: blob.name || file.name, mimeType: blob.type || file.type, data });
       return res.media;
     }
- 
+
     // ═══════════════════════════ السجل (المديرين) ═══════════════════════════
     const LOG_ACTIONS = {
       login: ['تسجيل دخول', 'lg-in'], loginFailed: ['دخول فاشل', 'lg-fail'], logout: ['خروج', ''],
       addCategory: ['إضافة مجلد', 'lg-add'], editCategory: ['تعديل مجلد', 'lg-edit'], deleteCategory: ['حذف مجلد', 'lg-del'],
       addService: ['إضافة خدمة', 'lg-add'], editService: ['تعديل خدمة', 'lg-edit'], deleteService: ['حذف خدمة', 'lg-del'],
-      moveItem: ['ترتيب', 'lg-move']
+      moveItem: ['ترتيب', 'lg-move'], importCatalog: ['استيراد', 'lg-add'], importImages: ['تحميل صور', 'lg-add']
     };
     let LOG = [];
     let logOpen = false;
@@ -1162,12 +1168,12 @@
       }).join('') : '<tr><td colspan="4" class="empty">لا توجد حركات مطابقة</td></tr>';
       document.getElementById('lgCount').textContent = rows.length + ' حركة' + (LOG.length >= 1000 ? ' — بيظهر آخر 1000 حركة، والباقي موجود في شيت Log' : '');
     }
- 
+
     // ═══════════════════════════ النوافذ والدخول ═══════════════════════════
     function openModal(id) { document.getElementById(id).classList.add('active'); }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active')); });
- 
+
     function openLogin() {
       showErr('loginError', '');
       openModal('loginModal');
@@ -1206,7 +1212,7 @@
       go('');
       loadCatalog();
     }
- 
+
     // ═══════════════════════════ البداية ═══════════════════════════
     (function init() {
       try { authUser = JSON.parse(store('yuni_svc_user') || 'null'); } catch (_) { authUser = null; }
@@ -1224,4 +1230,3 @@
   </script>
 </body>
 </html>
- 
