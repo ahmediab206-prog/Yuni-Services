@@ -532,15 +532,19 @@
     // ═══════════════════════════ روابط الصور ═══════════════════════════
     function driveImg(id, w) { return 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(id) + '&sz=w' + (w || 800); }
     function driveImgAlt(id, w) { return 'https://lh3.googleusercontent.com/d/' + encodeURIComponent(id) + '=w' + (w || 800); }
+    // صور Unsplash بتتعرض من رابطها مباشرة (مش محتاجة Drive)
+    function unsplashImg(id, w) { return 'https://images.unsplash.com/photo-' + encodeURIComponent(id) + '?w=' + (w || 800) + '&q=80&fm=jpg&fit=max'; }
+    function isPic(m) { return m && (m.t === 'image' || m.t === 'unsplash'); }
     function mediaThumb(m, w) {
       if (!m) return '';
+      if (m.t === 'unsplash') return unsplashImg(m.id, w);
       if (m.t === 'youtube') return 'https://i.ytimg.com/vi/' + encodeURIComponent(m.id) + '/hqdefault.jpg';
       return driveImg(m.id, w);
     }
     // صورة بفولباك: لو الرابط الأول فشل نجرب التاني، ولو فشل نشيلها ونسيب الأيقونة
     function imgTag(m, w) {
       if (!m) return '';
-      const alt = m.t === 'youtube' ? '' : driveImgAlt(m.id, w);
+      const alt = (m.t === 'youtube' || m.t === 'unsplash') ? '' : driveImgAlt(m.id, w);
       return '<img loading="lazy" src="' + esc(mediaThumb(m, w)) + '" data-alt="' + esc(alt) + '" onerror="imgFail(this)" alt="">';
     }
     function imgFail(img) {
@@ -703,7 +707,7 @@
       const m = s.media && s.media[0];
       return '<a class="tile" onclick="go(\'s/' + esc(s.id) + '\')">'
         + '<div class="tile-media"><div class="ph"><i class="fas fa-spa"></i></div>' + (m ? imgTag(m, 600) : '')
-        + (m && m.t !== 'image' ? '<span class="play"><i class="fas fa-play"></i></span>' : '') + '</div>'
+        + (m && !isPic(m) ? '<span class="play"><i class="fas fa-play"></i></span>' : '') + '</div>'
         + '<div class="tile-body">' + (showPath ? '<span class="tile-path">' + esc(pathText(s.category)) + '</span>' : '')
         + '<b>' + esc(s.name) + '</b><span class="tile-price">' + esc(priceText(s.price)) + '</span></div></a>';
     }
@@ -771,12 +775,13 @@
       const i = Math.max(0, Math.min(galleryIndex, media.length - 1));
       const m = media[i];
       let stage;
-      if (m.t === 'image') stage = '<img src="' + esc(driveImg(m.id, 1600)) + '" data-alt="' + esc(driveImgAlt(m.id, 1600)) + '" onerror="imgFail(this)" alt="' + esc(s.name) + '">';
+      if (m.t === 'unsplash') stage = '<img src="' + esc(unsplashImg(m.id, 1600)) + '" alt="' + esc(s.name) + '">';
+      else if (m.t === 'image') stage = '<img src="' + esc(driveImg(m.id, 1600)) + '" data-alt="' + esc(driveImgAlt(m.id, 1600)) + '" onerror="imgFail(this)" alt="' + esc(s.name) + '">';
       else if (m.t === 'video') stage = '<iframe src="https://drive.google.com/file/d/' + encodeURIComponent(m.id) + '/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>';
       // يوتيوب بيطلب Referer وإلا بيظهر Error 153 — عشان كده referrerpolicy
       else stage = '<iframe src="https://www.youtube.com/embed/' + encodeURIComponent(m.id) + '?rel=0&playsinline=1" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen title="YouTube"></iframe>'
         + '<a class="yt-open" href="https://www.youtube.com/watch?v=' + encodeURIComponent(m.id) + '" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> افتح على يوتيوب</a>';
-      let html = '<div class="stage' + (m.t === 'image' ? ' is-img' : '') + '" id="stage">' + stage;
+      let html = '<div class="stage' + (isPic(m) ? ' is-img' : '') + '" id="stage">' + stage;
       if (media.length > 1) {
         html += '<button class="stage-nav prev" onclick="galleryGo(-1)" aria-label="السابق"><i class="fas fa-chevron-right"></i></button>'
           + '<button class="stage-nav next" onclick="galleryGo(1)" aria-label="التالي"><i class="fas fa-chevron-left"></i></button>'
@@ -785,7 +790,7 @@
       html += '</div>';
       if (media.length > 1) {
         html += '<div class="thumbs">' + media.map((x, k) => '<div class="thumb' + (k === i ? ' active' : '') + '" onclick="galleryGo(0,' + k + ')">'
-          + imgTag(x, 200) + (x.t !== 'image' ? '<i class="fas fa-play"></i>' : '') + '</div>').join('') + '</div>';
+          + imgTag(x, 200) + (!isPic(x) ? '<i class="fas fa-play"></i>' : '') + '</div>').join('') + '</div>';
       }
       g.innerHTML = html;
       // سحب بالصباع على الموبايل
@@ -1026,8 +1031,8 @@
     }
     function renderSvcMedia() {
       const list = document.getElementById('svcMediaList');
-      let html = svcEdit.media.map((m, i) => '<div class="media-item"><div class="ph"><i class="fas ' + (m.t === 'image' ? 'fa-image' : 'fa-film') + '"></i></div>' + imgTag(m, 300)
-        + (m.t !== 'image' ? '<span class="kind">' + (m.t === 'youtube' ? 'يوتيوب' : 'فيديو') + '</span>' : '')
+      let html = svcEdit.media.map((m, i) => '<div class="media-item"><div class="ph"><i class="fas ' + (isPic(m) ? 'fa-image' : 'fa-film') + '"></i></div>' + imgTag(m, 300)
+        + (!isPic(m) ? '<span class="kind">' + (m.t === 'youtube' ? 'يوتيوب' : 'فيديو') + '</span>' : '')
         + (i === 0 ? '<span class="cover-tag">الغلاف</span>' : '')
         + '<div class="tools">'
         + (i > 0 ? '<button type="button" title="قبل" onclick="moveSvcMedia(' + i + ',-1)"><i class="fas fa-arrow-right"></i></button>' : '')
