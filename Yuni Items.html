@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Yuni - خدماتنا وأسعارها</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #E8E2CE;
+      --card-bg: #FFFFFF;
+      --primary-green: #184232;
+      --accent-green: #255C47;
+      --light-green: #EBF2EE;
+      --text-color: #2D312E;
+      --border-color: #D3CAB2;
+      --gold-accent: #C5A059;
+      --soft: #FAF8F5;
+      --danger: #C5221F;
+      --whatsapp-green: #25D366;
+    }
+    * { box-sizing: border-box; font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; }
+    body { background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px 15px; }
+    button { font-family: inherit; }
+    img { display: block; }
+ 
+    /* ── الهيدر ── */
+    .top-header {
+      width: 100%; max-width: 1300px; background: var(--card-bg);
+      border-radius: 16px; padding: 14px 22px; margin-bottom: 20px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+      box-shadow: 0 8px 20px rgba(24, 66, 50, 0.05); border: 1px solid var(--border-color);
+    }
+    .header-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .brand-name { color: var(--primary-green); font-size: 26px; font-weight: 700; }
+    .brand-korean { color: var(--primary-green); font-size: 20px; font-weight: 500; opacity: 0.85; }
+    .nav-tabs { display: none; gap: 6px; flex-wrap: wrap; }
+    .nav-tabs.show { display: flex; }
+    .nav-btn {
+      padding: 9px 16px; border: none; background: var(--soft); border-radius: 8px;
+      font-size: 14px; font-weight: 700; color: var(--primary-green); cursor: pointer;
+      display: flex; align-items: center; gap: 8px; transition: all 0.25s;
+    }
+    .nav-btn:hover { background: var(--light-green); }
+    .nav-btn.active { background: var(--primary-green); color: #FFFFFF; box-shadow: 0 4px 10px rgba(24, 66, 50, 0.2); }
+    .user-profile-bar { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; color: var(--primary-green); }
+    .role-badge { background: var(--light-green); border-radius: 12px; padding: 2px 9px; font-size: 11px; }
+    .logout-btn { background: #FCE8E6; color: var(--danger); border: 1px solid #F5C6CB; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 700; }
+    .staff-login-btn { background: transparent; border: 1px solid var(--border-color); color: #8A8470; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .staff-login-btn:hover { color: var(--primary-green); border-color: var(--primary-green); }
+ 
+    .main-wrapper { width: 100%; max-width: 1300px; }
+    .view-page { display: none; }
+    .view-page.active { display: block; }
+    .card { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: 0 12px 30px rgba(24, 66, 50, 0.08); border: 1px solid var(--border-color); position: relative; }
+    @media (max-width: 650px) { .card { padding: 18px; border-radius: 16px; } body { padding: 12px 10px; } .top-header { padding: 12px 14px; } }
+ 
+    /* ── عام ── */
+    .page-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+    .page-head h2 { color: var(--primary-green); font-size: 21px; display: flex; align-items: center; gap: 9px; }
+    .crumbs { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 14px; font-weight: 700; color: #8A8470; margin-bottom: 16px; }
+    .crumbs a { color: var(--primary-green); text-decoration: none; cursor: pointer; }
+    .crumbs a:hover { text-decoration: underline; }
+    .crumbs .sep { color: var(--border-color); font-size: 11px; }
+    .crumbs .current { color: var(--text-color); }
+    .search-box { position: relative; flex: 1 1 260px; max-width: 420px; }
+    .search-box i { position: absolute; right: 13px; top: 50%; transform: translateY(-50%); color: #A39C85; }
+    input[type="text"], input[type="password"], input[type="number"], input[type="date"], select, textarea {
+      width: 100%; padding: 11px 14px; border: 1.5px solid var(--border-color); border-radius: 10px;
+      font-size: 15px; background-color: var(--soft); color: var(--text-color); outline: none; transition: all 0.25s ease;
+    }
+    textarea { resize: vertical; min-height: 80px; line-height: 1.7; }
+    input:focus, select:focus, textarea:focus { border-color: var(--primary-green); background: #FFF; }
+    .search-box input { padding-right: 38px; }
+    .btn { padding: 10px 16px; font-size: 14px; font-weight: 700; border-radius: 10px; border: 1.5px solid var(--primary-green); background: var(--primary-green); color: #FFF; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: all .2s; white-space: nowrap; }
+    .btn:hover { background: var(--accent-green); }
+    .btn.alt { background: var(--soft); color: var(--primary-green); border-color: var(--border-color); }
+    .btn.alt:hover { background: var(--light-green); border-color: var(--primary-green); }
+    .btn.wa { background: var(--whatsapp-green); border-color: var(--whatsapp-green); }
+    .btn.wa:hover { filter: brightness(.95); }
+    .btn:disabled { opacity: .5; cursor: not-allowed; }
+    .icon-btn { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--soft); color: var(--primary-green); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; transition: all .2s; }
+    .icon-btn:hover { background: var(--light-green); border-color: var(--primary-green); }
+    .icon-btn.danger { color: var(--danger); }
+    .icon-btn.danger:hover { background: #FDECEA; border-color: var(--danger); }
+    .icon-btn:disabled { opacity: .35; cursor: not-allowed; }
+    .empty { text-align: center; color: #9A937D; padding: 40px 10px; font-size: 15px; }
+    .empty i { font-size: 34px; display: block; margin-bottom: 12px; color: var(--border-color); }
+    .loading { text-align: center; color: var(--primary-green); padding: 40px; font-weight: 700; }
+    .hidden-badge { background: #EEE; color: #666; border-radius: 10px; padding: 2px 8px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+ 
+    /* ── كروت الكتالوج ── */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    @media (max-width: 650px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+    .tile { background: #FFF; border: 1.5px solid var(--border-color); border-radius: 16px; overflow: hidden; cursor: pointer; transition: all .25s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+    .tile:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(24,66,50,.12); border-color: var(--gold-accent); }
+    .tile-media { position: relative; aspect-ratio: 4 / 3; background: linear-gradient(135deg, var(--light-green), #F4EFE0); overflow: hidden; }
+    .tile-media img { width: 100%; height: 100%; object-fit: cover; }
+    .tile-media .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--primary-green); font-size: 38px; opacity: .55; }
+    .tile-media .play { position: absolute; left: 10px; bottom: 10px; background: rgba(0,0,0,.55); color: #FFF; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+    .tile.folder .tile-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(24,66,50,.82), rgba(24,66,50,0) 60%); }
+    .tile.folder .tile-title { position: absolute; bottom: 0; right: 0; left: 0; padding: 14px; color: #FFF; z-index: 1; }
+    .tile.folder .tile-title b { font-size: 19px; display: block; }
+    .tile.folder .tile-title span { font-size: 12px; opacity: .9; }
+    .tile-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .tile-body b { font-size: 15px; color: var(--primary-green); line-height: 1.45; }
+    .tile-price { margin-top: auto; font-weight: 800; color: var(--gold-accent); font-size: 15px; }
+    .tile-path { font-size: 11px; color: #9A937D; }
+    .section-label { font-size: 15px; font-weight: 700; color: var(--primary-green); margin: 26px 0 12px; display: flex; align-items: center; gap: 8px; }
+    .section-label:first-child { margin-top: 0; }
+    .folder-intro { color: #6B6655; font-size: 14px; line-height: 1.8; margin: -6px 0 16px; white-space: pre-line; }
+ 
+    /* ── صفحة الخدمة ── */
+    .svc-page { max-width: 860px; margin: 0 auto; }
+    .gallery { border-radius: 16px; overflow: hidden; background: #F1EFEA; border: 1px solid var(--border-color); }
+    .stage { position: relative; width: 100%; height: clamp(300px, 62vh, 560px); background: #F1EFEA; display: flex; align-items: center; justify-content: center; }
+    .stage img { width: 100%; height: 100%; object-fit: contain; }
+    .stage.is-img { height: auto; min-height: 220px; }
+    .stage.is-img img { height: auto; max-height: clamp(300px, 72vh, 620px); }
+    .stage iframe { width: 100%; height: 100%; border: 0; background: #000; }
+    .stage .ph { color: var(--primary-green); opacity: .4; font-size: 60px; }
+    .stage-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,.9); color: var(--primary-green); cursor: pointer; font-size: 15px; box-shadow: 0 4px 12px rgba(0,0,0,.15); z-index: 2; }
+    .stage-nav.prev { right: 12px; } .stage-nav.next { left: 12px; }
+    .yt-open { position: absolute; bottom: 12px; right: 12px; z-index: 2; background: rgba(255,255,255,.92); color: #C4302B; text-decoration: none; font-size: 12px; font-weight: 700; padding: 5px 11px; border-radius: 14px; display: inline-flex; align-items: center; gap: 6px; }
+    .stage-count { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,.55); color: #FFF; font-size: 12px; padding: 3px 10px; border-radius: 12px; z-index: 2; direction: ltr; }
+    .thumbs { display: flex; gap: 8px; padding: 10px; overflow-x: auto; background: #FFF; border-top: 1px solid var(--border-color); }
+    .thumb { flex: 0 0 72px; height: 54px; border-radius: 8px; overflow: hidden; border: 2px solid transparent; cursor: pointer; position: relative; background: var(--light-green); }
+    .thumb.active { border-color: var(--gold-accent); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .thumb i { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #FFF; background: rgba(0,0,0,.35); font-size: 13px; }
+    .svc-head { margin: 22px 0 6px; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; flex-wrap: wrap; }
+    .svc-head h1 { color: var(--primary-green); font-size: 26px; line-height: 1.4; }
+    .svc-price { background: var(--primary-green); color: #FFF; border-radius: 12px; padding: 8px 16px; font-size: 20px; font-weight: 800; white-space: nowrap; }
+    .svc-price.text { font-size: 15px; }
+    .svc-desc { font-size: 16px; line-height: 1.9; color: #3F433F; white-space: pre-line; margin: 10px 0 4px; }
+    .svc-box { margin-top: 18px; border-radius: 14px; padding: 16px 18px; border: 1px solid var(--border-color); background: var(--soft); }
+    .svc-box h3 { font-size: 15px; color: var(--primary-green); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .svc-box p { white-space: pre-line; line-height: 1.85; font-size: 15px; }
+    .svc-box.suitable { background: var(--light-green); border-color: rgba(24,66,50,.18); }
+    .svc-box.notes { background: #FFF8E7; border-color: #EBD9A8; }
+    .svc-box.notes h3 { color: #8A6420; }
+    .svc-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+ 
+    /* ── الجداول ── */
+    .table-container { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border-color); }
+    table { width: 100%; border-collapse: collapse; text-align: right; background: #FFF; }
+    th, td { padding: 11px 13px; border-bottom: 1px solid var(--border-color); font-size: 14px; vertical-align: middle; }
+    th { background-color: #F1EFEA; color: var(--primary-green); font-weight: 700; position: sticky; top: 0; z-index: 1; white-space: nowrap; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: #FBFAF6; }
+    .price-cell { font-weight: 800; color: var(--primary-green); white-space: nowrap; }
+    .path-cell { color: #6B6655; font-size: 13px; }
+    .group-row td { background: var(--light-green) !important; color: var(--primary-green); font-weight: 800; font-size: 14px; }
+    .filters { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 14px; background: var(--light-green); padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(24,66,50,.15); }
+    .filters .f { display: flex; flex-direction: column; gap: 5px; flex: 1 1 220px; }
+    .filters label { font-size: 12px; font-weight: 700; color: var(--primary-green); }
+    .filters input, .filters select { background: #FFF; padding: 10px 12px; font-size: 14px; }
+    .msg-preview { margin-top: 16px; background: #F4F1E8; border: 1px dashed var(--border-color); border-radius: 12px; padding: 14px 16px; font-size: 13px; line-height: 1.8; white-space: pre-wrap; max-height: 320px; overflow: auto; color: #3F433F; }
+    .msg-preview-head { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; font-weight: 700; color: var(--primary-green); font-size: 14px; }
+ 
+    /* ── الإدارة ── */
+    .mg-row-name { display: flex; align-items: center; gap: 12px; }
+    .mg-thumb { width: 52px; height: 40px; border-radius: 8px; overflow: hidden; background: var(--light-green); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--primary-green); }
+    .mg-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .mg-thumb.folder { background: #F6EDD5; color: var(--gold-accent); font-size: 20px; }
+    .mg-name { font-weight: 700; color: var(--primary-green); cursor: pointer; }
+    .mg-name:hover { text-decoration: underline; }
+    .mg-sub { font-size: 12px; color: #9A937D; margin-top: 2px; }
+    .mg-actions { display: flex; gap: 5px; justify-content: flex-end; }
+    tr.is-hidden td { opacity: .6; }
+ 
+    /* ── النوافذ ── */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(24, 66, 50, 0.55); backdrop-filter: blur(6px); display: none; justify-content: center; align-items: flex-start; z-index: 1000; padding: 30px 15px; overflow-y: auto; }
+    .modal-overlay.active { display: flex; }
+    .modal-card { background: #FFF; border-radius: 18px; padding: 26px; width: 100%; max-width: 560px; box-shadow: 0 15px 35px rgba(0,0,0,0.25); border: 1px solid var(--border-color); margin: auto 0; }
+    .modal-card h3 { color: var(--primary-green); margin-bottom: 18px; font-size: 19px; display: flex; align-items: center; gap: 8px; }
+    .fields { display: flex; flex-direction: column; gap: 14px; }
+    .field label { display: block; font-size: 13px; font-weight: 700; color: var(--primary-green); margin-bottom: 6px; }
+    .field .hint { font-size: 12px; color: #9A937D; margin-top: 5px; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 560px) { .two { grid-template-columns: 1fr; } }
+    .check-row { display: flex; align-items: center; gap: 9px; font-weight: 700; color: var(--primary-green); cursor: pointer; font-size: 14px; }
+    .check-row input { width: 18px; height: 18px; accent-color: var(--primary-green); }
+    .modal-actions { display: flex; gap: 10px; margin-top: 8px; }
+    .modal-actions .btn { flex: 1; padding: 13px; font-size: 15px; }
+    .modal-error { color: var(--danger); font-size: 13px; display: none; background: #FDECEA; border-radius: 8px; padding: 9px 12px; }
+    .media-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 10px; }
+    .media-item { position: relative; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: var(--light-green); border: 1.5px solid var(--border-color); }
+    .media-item img { width: 100%; height: 100%; object-fit: cover; }
+    .media-item .kind { position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,.6); color: #FFF; font-size: 10px; padding: 2px 7px; border-radius: 8px; }
+    .media-item .cover-tag { position: absolute; bottom: 5px; right: 5px; background: var(--gold-accent); color: #FFF; font-size: 10px; padding: 2px 7px; border-radius: 8px; font-weight: 700; }
+    .media-item .tools { position: absolute; top: 5px; left: 5px; display: flex; gap: 4px; }
+    .media-item .tools button { width: 24px; height: 24px; border-radius: 6px; border: none; background: rgba(255,255,255,.92); color: var(--primary-green); cursor: pointer; font-size: 11px; }
+    .media-item .tools button.del { color: var(--danger); }
+    .media-item.uploading { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; color: var(--primary-green); font-size: 11px; font-weight: 700; text-align: center; padding: 6px; }
+    .media-item .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--primary-green); font-size: 22px; opacity: .5; }
+    .media-add { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .media-add input { flex: 1 1 200px; }
+    .cover-box { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .cover-box .media-item { width: 130px; }
+ 
+    /* ── دخول ── */
+    .login-card { max-width: 400px; text-align: center; }
+    .login-card h3 { justify-content: center; }
+    .login-card p { color: #777; font-size: 13px; margin: -8px 0 18px; }
+ 
+ 
+    /* ── السجل ── */
+    .log-table td.details { white-space: pre-line; line-height: 1.75; min-width: 280px; font-size: 13px; color: #3F433F; }
+    .log-table td.time { white-space: nowrap; color: #6B6655; font-size: 13px; direction: ltr; text-align: right; }
+    .lg-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; white-space: nowrap; background: #EEE; color: #555; }
+    .lg-add { background: #E5F0EC; color: #184232; } .lg-edit { background: #FFF3CD; color: #7A4F00; }
+    .lg-del, .lg-fail { background: #FDECEA; color: #C5221F; } .lg-move { background: #E8EAF6; color: #283593; }
+    .lg-in { background: #E0F2F1; color: #00695C; }
+    .m-path { display: none; font-size: 11px; color: #9A937D; margin-top: 2px; }
+    .count-note { font-size: 12px; color: #9A937D; margin-top: 10px; }
+ 
+    /* ═══ تابلت ═══ */
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+      .stage { height: clamp(280px, 55vh, 480px); }
+    }
+ 
+    /* ═══ موبايل ═══ */
+    @media (max-width: 700px) {
+      .top-header { gap: 10px; }
+      .brand-name { font-size: 22px; } .brand-korean { font-size: 16px; }
+      .nav-tabs { order: 3; width: 100%; flex-wrap: nowrap; gap: 5px; }
+      .nav-btn { flex: 1 1 0; min-width: 0; justify-content: center; padding: 9px 4px; font-size: 12.5px; white-space: nowrap; }
+      .nav-btn i { display: none; }
+      .user-profile-bar { gap: 7px; font-size: 12px; }
+ 
+      .page-head h2 { font-size: 18px; }
+      .page-head > div { width: 100%; }
+      .page-head > div .btn { flex: 1; }
+      .search-box { flex-basis: 100%; max-width: none; }
+      .crumbs { font-size: 13px; }
+      .filters { padding: 12px; gap: 8px; }
+      .filters .f { flex-basis: 100%; }
+      .filters .f.half { flex-basis: calc(50% - 4px); }
+      .filters .f, .filters input, .filters select { min-width: 0; }
+      .filters input[type="date"] { padding: 10px 8px; font-size: 13px; }
+ 
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .tile { border-radius: 12px; }
+      .tile.folder .tile-title { padding: 10px; }
+      .tile.folder .tile-title b { font-size: 15px; }
+      .tile-body { padding: 9px 10px 11px; gap: 4px; }
+      .tile-body b { font-size: 13.5px; }
+      .tile-price { font-size: 13.5px; }
+      .section-label { margin: 20px 0 10px; }
+ 
+      .stage { height: min(110vw, 66vh); }
+      .stage-nav { width: 34px; height: 34px; font-size: 13px; }
+      .thumbs { gap: 6px; padding: 8px; }
+      .thumb { flex-basis: 60px; height: 46px; }
+      .svc-head { margin-top: 16px; }
+      .svc-head h1 { font-size: 21px; width: 100%; }
+      .svc-price { font-size: 17px; padding: 6px 14px; }
+      .svc-desc { font-size: 15px; }
+      .svc-box { padding: 13px 14px; }
+      .svc-box p { font-size: 14px; }
+      .svc-actions .btn { flex: 1; }
+ 
+      th, td { padding: 9px 10px; font-size: 13px; }
+      .prices-table th:first-child, .prices-table td:first-child { display: none; }
+      .prices-table .m-path { display: block; }
+ 
+      /* جدول الإدارة والسجل بيتحولوا لكروت */
+      .mg-table thead, .log-table thead { display: none; }
+      .mg-table, .mg-table tbody, .log-table, .log-table tbody { display: block; }
+      .mg-table tr, .log-table tr { display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; padding: 12px; border-bottom: 1px solid var(--border-color); align-items: center; }
+      .mg-table tr:last-child, .log-table tr:last-child { border-bottom: none; }
+      .mg-table td, .log-table td { border: none; padding: 0; }
+      .mg-table td:nth-child(1), .mg-table td:nth-child(4) { grid-column: 1 / -1; }
+      .mg-table td[colspan], .log-table td[colspan] { grid-column: 1 / -1; }
+      .mg-actions { justify-content: flex-start; flex-wrap: wrap; }
+      .mg-table .icon-btn { width: 38px; height: 38px; }
+      .log-table td.details { grid-column: 1 / -1; min-width: 0; }
+      .log-table td.time { grid-column: 1 / -1; order: -1; font-size: 12px; }
+ 
+      .modal-overlay { padding: 10px; }
+      .modal-card { padding: 18px; border-radius: 14px; }
+      .modal-card h3 { font-size: 17px; margin-bottom: 14px; }
+      .media-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+      .media-add .btn { flex: 1; }
+      footer { font-size: 12px; }
+    }
+    @media (max-width: 400px) {
+      .user-profile-bar .uname { display: none; }
+      .brand-korean { display: none; }
+    }
+    .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--primary-green); color: #FFF; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 14px; box-shadow: 0 10px 25px rgba(0,0,0,.2); opacity: 0; pointer-events: none; transition: all .3s; z-index: 3000; max-width: 90vw; text-align: center; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast.err { background: var(--danger); }
+ 
+    footer { margin-top: 35px; padding: 15px; text-align: center; font-size: 13px; color: var(--primary-green); display: flex; align-items: center; justify-content: center; gap: 10px; border-top: 1px solid var(--border-color); width: 100%; max-width: 1300px; flex-wrap: wrap; }
+    .whatsapp-btn { display: inline-flex; align-items: center; gap: 4px; background-color: var(--whatsapp-green); color: #FFFFFF; padding: 4px 10px; border-radius: 14px; text-decoration: none; font-weight: 600; font-size: 11px; }
+  </style>
+</head>
+<body>
+ 
+  <!-- الهيدر -->
+  <header class="top-header">
+    <div class="header-logo" onclick="go('')">
+      <span class="brand-name">YUNI</span>
+      <span class="brand-korean">- 유니</span>
+    </div>
+    <nav class="nav-tabs" id="navTabs">
+      <button class="nav-btn" id="tabCatalog" onclick="go('')"><i class="fas fa-spa"></i> الخدمات</button>
+      <button class="nav-btn" id="tabPrices" onclick="go('prices')"><i class="fas fa-tags"></i> قائمة الأسعار</button>
+      <button class="nav-btn" id="tabManage" onclick="go('manage')"><i class="fas fa-folder-tree"></i> إدارة الخدمات</button>
+      <button class="nav-btn" id="tabLog" onclick="go('log')"><i class="fas fa-history"></i> السجل</button>
+    </nav>
+    <div class="user-profile-bar" id="userBar"></div>
+  </header>
+ 
+  <div class="main-wrapper">
+ 
+    <!-- ═══ الخدمات (العملاء + الكل) ═══ -->
+    <section id="pageCatalog" class="view-page active">
+      <div class="card">
+        <div id="catalogBody"><div class="loading"><i class="fas fa-spinner fa-spin"></i> جاري تحميل الخدمات...</div></div>
+      </div>
+    </section>
+ 
+    <!-- ═══ قائمة الأسعار (الموظفين) ═══ -->
+    <section id="pagePrices" class="view-page">
+      <div class="card">
+        <div class="page-head">
+          <h2><i class="fas fa-tags"></i> قائمة الأسعار</h2>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn" onclick="copyPriceMessage()"><i class="fas fa-copy"></i> نسخ الرسالة</button>
+            <button class="btn wa" onclick="sendPriceWhatsApp()"><i class="fab fa-whatsapp"></i> إرسال واتساب</button>
+          </div>
+        </div>
+        <div class="filters">
+          <div class="f"><label>المجلد</label><select id="prFolder" onchange="renderPrices()"></select></div>
+          <div class="f"><label>بحث</label><input type="text" id="prSearch" placeholder="اسم الخدمة..." oninput="renderPrices()"></div>
+        </div>
+        <div class="table-container">
+          <table class="prices-table">
+            <thead><tr><th>الكاتيجوري</th><th>اسم الخدمة</th><th>السعر</th></tr></thead>
+            <tbody id="prBody"></tbody>
+          </table>
+        </div>
+        <div class="msg-preview-head"><span><i class="fab fa-whatsapp"></i> شكل الرسالة</span><span id="prCount" style="font-size:12px; color:#9A937D;"></span></div>
+        <div class="msg-preview" id="prPreview"></div>
+      </div>
+    </section>
+ 
+    <!-- ═══ إدارة الخدمات (المديرين) ═══ -->
+    <section id="pageManage" class="view-page">
+      <div class="card">
+        <div class="page-head">
+          <h2><i class="fas fa-folder-tree"></i> إدارة الخدمات</h2>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn alt" onclick="openCategoryModal()"><i class="fas fa-folder-plus"></i> مجلد جديد</button>
+            <button class="btn" id="mgAddService" onclick="openServiceModal()"><i class="fas fa-plus"></i> خدمة جديدة</button>
+            <button class="btn alt" onclick="loadCatalog(true)" title="تحديث"><i class="fas fa-sync-alt"></i></button>
+          </div>
+        </div>
+        <div class="crumbs" id="mgCrumbs"></div>
+        <div class="folder-intro" id="mgIntro" style="display:none;"></div>
+        <div class="table-container">
+          <table class="mg-table">
+            <thead><tr><th>الاسم</th><th>السعر / المحتوى</th><th>الحالة</th><th style="text-align:left;">إجراءات</th></tr></thead>
+            <tbody id="mgBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- ═══ السجل (المديرين) ═══ -->
+    <section id="pageLog" class="view-page">
+      <div class="card">
+        <div class="page-head">
+          <h2><i class="fas fa-history"></i> السجل</h2>
+          <div style="display:flex; gap:8px;"><button class="btn alt" onclick="loadLog()"><i class="fas fa-sync-alt"></i> تحديث</button></div>
+        </div>
+        <div class="filters">
+          <div class="f half"><label>من تاريخ</label><input type="date" id="lgFrom" onchange="renderLog()"></div>
+          <div class="f half"><label>إلى تاريخ</label><input type="date" id="lgTo" onchange="renderLog()"></div>
+          <div class="f half"><label>المستخدم</label><select id="lgUser" onchange="renderLog()"><option value="">الكل</option></select></div>
+          <div class="f half"><label>العملية</label><select id="lgAction" onchange="renderLog()"></select></div>
+          <div class="f"><label>بحث</label><input type="text" id="lgSearch" placeholder="اسم خدمة، مجلد، سعر..." oninput="renderLog()"></div>
+        </div>
+        <div class="table-container" style="max-height:680px; overflow:auto;">
+          <table class="log-table">
+            <thead><tr><th>الوقت</th><th>المستخدم</th><th>العملية</th><th>التفاصيل</th></tr></thead>
+            <tbody id="lgBody"></tbody>
+          </table>
+        </div>
+        <div class="count-note" id="lgCount"></div>
+      </div>
+    </section>
+  </div>
+ 
+  <footer>
+    <span>تطوير وبرمجة: <strong>أحمد ياسر دياب</strong></span>
+    <a href="https://wa.me/201091936251" target="_blank" class="whatsapp-btn">
+      <i class="fab fa-whatsapp"></i> تواصل عبر واتساب
+    </a>
+  </footer>
+ 
+  <!-- دخول الموظفين -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-card login-card">
+      <h3><i class="fas fa-user-lock" style="color:var(--gold-accent);"></i> دخول الموظفين</h3>
+      <p>للموظفين والمديرين فقط</p>
+      <form class="fields" id="loginForm">
+        <input type="text" id="loginUser" placeholder="اسم المستخدم" autocomplete="username" required>
+        <input type="password" id="loginPass" placeholder="كلمة المرور" autocomplete="current-password" required>
+        <div class="modal-error" id="loginError"></div>
+        <div class="modal-actions">
+          <button type="submit" class="btn" id="loginBtn">دخول</button>
+          <button type="button" class="btn alt" onclick="closeModal('loginModal')">إلغاء</button>
+        </div>
+      </form>
+    </div>
+  </div>
+ 
+  <!-- مجلد (Category) -->
+  <div class="modal-overlay" id="catModal">
+    <div class="modal-card">
+      <h3 id="catModalTitle"><i class="fas fa-folder" style="color:var(--gold-accent);"></i> مجلد</h3>
+      <div class="fields">
+        <div class="field"><label>اسم المجلد *</label><input type="text" id="catName" placeholder="مثال: SPA / Laser / الوجه"></div>
+        <div class="field"><label>داخل</label><select id="catParent"></select></div>
+        <div class="field"><label>وصف قصير (اختياري)</label><textarea id="catDesc" rows="2" placeholder="بيظهر للعميل أول ما يفتح المجلد"></textarea></div>
+        <div class="field">
+          <label>صورة الغلاف (اختياري)</label>
+          <div class="cover-box">
+            <div id="catCoverPreview"></div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button type="button" class="btn alt" onclick="document.getElementById('catCoverInput').click()"><i class="fas fa-image"></i> اختيار صورة</button>
+              <button type="button" class="btn alt" id="catCoverRemove" onclick="setCatCover('')" style="display:none;"><i class="fas fa-times"></i> إزالة</button>
+            </div>
+            <input type="file" id="catCoverInput" accept="image/*" style="display:none;" onchange="uploadCatCover(this)">
+          </div>
+        </div>
+        <label class="check-row"><input type="checkbox" id="catActive" checked> ظاهر للعملاء</label>
+        <div class="modal-error" id="catError"></div>
+        <div class="modal-actions">
+          <button class="btn" id="catSave" onclick="saveCategory()"><i class="fas fa-save"></i> حفظ</button>
+          <button class="btn alt" onclick="closeModal('catModal')">إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- خدمة (Service) -->
+  <div class="modal-overlay" id="svcModal">
+    <div class="modal-card" style="max-width:680px;">
+      <h3 id="svcModalTitle"><i class="fas fa-spa" style="color:var(--gold-accent);"></i> خدمة</h3>
+      <div class="fields">
+        <div class="two">
+          <div class="field"><label>اسم الخدمة *</label><input type="text" id="svcName" placeholder="مثال: مساج استرخاء"></div>
+          <div class="field"><label>السعر</label><input type="text" id="svcPrice" inputmode="decimal" placeholder="مثال: 500"><div class="hint">رقم بالجنيه، أو نص زي "من 300". فاضي = حسب الاستشارة</div></div>
+        </div>
+        <div class="field"><label>المجلد *</label><select id="svcCategory"></select></div>
+        <div class="field">
+          <label>الصور والفيديوهات</label>
+          <div class="media-list" id="svcMediaList"></div>
+          <div class="media-add">
+            <button type="button" class="btn alt" onclick="document.getElementById('svcMediaInput').click()"><i class="fas fa-upload"></i> رفع صور / فيديو</button>
+            <input type="text" id="svcYoutube" placeholder="أو لينك يوتيوب...">
+            <button type="button" class="btn alt" onclick="addYoutube()"><i class="fab fa-youtube"></i> إضافة</button>
+          </div>
+          <input type="file" id="svcMediaInput" accept="image/*,video/*" multiple style="display:none;" onchange="uploadServiceMedia(this)">
+          <div class="hint">أول عنصر هو الغلاف. الفيديو لحد 25 ميجا، وللأكبر استخدم يوتيوب.</div>
+        </div>
+        <div class="field"><label>الوصف</label><textarea id="svcDesc" rows="4" placeholder="وصف الخدمة للعميل..."></textarea></div>
+        <div class="field"><label>مناسبة لمين</label><textarea id="svcSuitable" rows="2" placeholder="مثال: البشرة الدهنية، من سن 18..."></textarea></div>
+        <div class="field"><label>ملاحظات</label><textarea id="svcNotes" rows="2" placeholder="مثال: مدة الجلسة 60 دقيقة، يُفضّل الحجز المسبق..."></textarea></div>
+        <label class="check-row"><input type="checkbox" id="svcActive" checked> ظاهرة للعملاء</label>
+        <div class="modal-error" id="svcError"></div>
+        <div class="modal-actions">
+          <button class="btn" id="svcSave" onclick="saveService()"><i class="fas fa-save"></i> حفظ</button>
+          <button class="btn alt" onclick="closeModal('svcModal')">إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="toast" id="toast"></div>
+ 
+  <script>
+    // ═══════════════════════════════════════════════════════════════
+    // الإعدادات — حط لينك الـ Web App بتاع السكريبت هنا
+    // ═══════════════════════════════════════════════════════════════
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHnENWYULV02tITec_HD0_DTKmfUTJfiiAyL2HWJfazof6smmMmmlcBJVbOvJNjcC0zQ/exec";
+    const PRICE_MSG_TITLE = 'قائمة أسعار خدمات YUNI';
+    const CURRENCY = 'ج.م';
+    const MAX_VIDEO_MB = 25;
+ 
+    // ═══════════════════════════ الحالة ═══════════════════════════
+    let authUser = null;
+    let DATA = { categories: [], services: [] };
+    let IDX = null;
+    let loaded = false;
+    let route = { page: 'catalog', id: '' };
+    let catalogSearch = '';
+    let galleryIndex = 0;
+ 
+    // ═══════════════════════════ أدوات ═══════════════════════════
+    function esc(v) { return String(v === null || v === undefined ? '' : v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+    function store(key, val) { try { if (val === undefined) return localStorage.getItem(key); if (val === null) localStorage.removeItem(key); else localStorage.setItem(key, val); } catch (_) { return null; } }
+    function isStaff() { return !!authUser; }
+    function isManager() { return !!(authUser && authUser.role === 'Manager'); }
+    function toast(msg, isErr) {
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.className = 'toast show' + (isErr ? ' err' : '');
+      clearTimeout(t._h); t._h = setTimeout(() => { t.className = 'toast'; }, 2600);
+    }
+    function priceText(p) {
+      if (p === '' || p === null || p === undefined) return 'حسب الاستشارة';
+      if (typeof p === 'number' || /^\d+(\.\d+)?$/.test(String(p))) return Number(p).toLocaleString('en-US') + ' ' + CURRENCY;
+      return String(p);
+    }
+    function isNumericPrice(p) { return p !== '' && p !== null && p !== undefined && !isNaN(Number(p)); }
+ 
+    function apiPost(payload) {
+      return fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(Object.assign({}, payload, { token: store('yuni_svc_token') || '' })) })
+        .then(r => r.json())
+        .then(res => { if (res.status !== 'success') throw new Error(res.message || 'حدث خطأ'); return res; });
+    }
+ 
+    // ═══════════════════════════ روابط الصور ═══════════════════════════
+    function driveImg(id, w) { return 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(id) + '&sz=w' + (w || 800); }
+    function driveImgAlt(id, w) { return 'https://lh3.googleusercontent.com/d/' + encodeURIComponent(id) + '=w' + (w || 800); }
+    function mediaThumb(m, w) {
+      if (!m) return '';
+      if (m.t === 'youtube') return 'https://i.ytimg.com/vi/' + encodeURIComponent(m.id) + '/hqdefault.jpg';
+      return driveImg(m.id, w);
+    }
+    // صورة بفولباك: لو الرابط الأول فشل نجرب التاني، ولو فشل نشيلها ونسيب الأيقونة
+    function imgTag(m, w) {
+      if (!m) return '';
+      const alt = m.t === 'youtube' ? '' : driveImgAlt(m.id, w);
+      return '<img loading="lazy" src="' + esc(mediaThumb(m, w)) + '" data-alt="' + esc(alt) + '" onerror="imgFail(this)" alt="">';
+    }
+    function imgFail(img) {
+      const alt = img.getAttribute('data-alt');
+      if (alt) { img.removeAttribute('data-alt'); img.src = alt; return; }
+      img.remove();
+    }
+    function youtubeId(url) {
+      const s = String(url || '').trim();
+      const m = s.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/))([\w-]{11})/);
+      if (m) return m[1];
+      return /^[\w-]{11}$/.test(s) ? s : '';
+    }
+ 
+    // ═══════════════════════════ فهرسة البيانات ═══════════════════════════
+    function buildIndex() {
+      const cat = {}, kids = {}, svcOf = {}, svc = {};
+      DATA.categories.forEach(c => { cat[c.id] = c; });
+      DATA.categories.forEach(c => { const p = cat[c.parent] ? c.parent : ''; (kids[p] = kids[p] || []).push(c); });
+      DATA.services.forEach(s => { svc[s.id] = s; (svcOf[s.category] = svcOf[s.category] || []).push(s); });
+      const bySort = (a, b) => (a.sort - b.sort) || a.name.localeCompare(b.name, 'ar');
+      Object.values(kids).forEach(a => a.sort(bySort));
+      Object.values(svcOf).forEach(a => a.sort(bySort));
+      // الظاهر للعملاء: المجلد ظاهر وكل اللي فوقه ظاهر
+      const visCache = {};
+      const catVisible = id => {
+        if (id in visCache) return visCache[id];
+        const c = cat[id];
+        return (visCache[id] = !!c && c.active && (!cat[c.parent] || catVisible(c.parent)));
+      };
+      IDX = { cat, kids, svcOf, svc, catVisible };
+    }
+    function childCats(parentId, all) { return (IDX.kids[parentId || ''] || []).filter(c => all || IDX.catVisible(c.id)); }
+    function catServices(catId, all) { return (IDX.svcOf[catId] || []).filter(s => all || (s.active && IDX.catVisible(s.category))); }
+    function pathOf(catId) {
+      const out = []; let c = IDX.cat[catId], guard = 0;
+      while (c && guard++ < 50) { out.unshift(c); c = IDX.cat[c.parent]; }
+      return out;
+    }
+    function pathText(catId) { return pathOf(catId).map(c => c.name).join(' - '); }
+    function countDeep(catId, all) {
+      let n = catServices(catId, all).length;
+      childCats(catId, all).forEach(c => { n += countDeep(c.id, all); });
+      return n;
+    }
+    // كل المجلدات بترتيب الشجرة (للقوايم المنسدلة والرسالة)
+    function treeOrder(all, excludeId) {
+      const out = [];
+      const walk = (pid, depth) => childCats(pid, all).forEach(c => {
+        if (c.id === excludeId) return;
+        out.push({ c, depth }); walk(c.id, depth + 1);
+      });
+      walk('', 0);
+      return out;
+    }
+    function firstImageForCat(catId, all) {
+      const c = IDX.cat[catId];
+      if (c && c.cover) return { t: 'image', id: c.cover };
+      const s = catServices(catId, all).find(x => x.media && x.media.length);
+      if (s) return s.media[0];
+      for (const k of childCats(catId, all)) { const m = firstImageForCat(k.id, all); if (m) return m; }
+      return null;
+    }
+ 
+    // ═══════════════════════════ التحميل ═══════════════════════════
+    async function loadCatalog(force) {
+      if (!SCRIPT_URL || SCRIPT_URL.indexOf('PUT_YOUR') === 0) {
+        document.getElementById('catalogBody').innerHTML = '<div class="empty"><i class="fas fa-plug"></i>لم يتم ضبط رابط السكريبت (SCRIPT_URL) في الملف.</div>';
+        return;
+      }
+      try {
+        const url = SCRIPT_URL + '?token=' + encodeURIComponent(store('yuni_svc_token') || '') + '&t=' + Date.now();
+        const res = await (await fetch(url)).json();
+        if (res.status !== 'success') throw new Error(res.message || 'تعذر التحميل');
+        if (store('yuni_svc_token') && !res.user) logoutLocal(); // الجلسة انتهت
+        else if (res.user) { authUser = res.user; store('yuni_svc_user', JSON.stringify(res.user)); }
+        setData(res);
+        if (force) toast('تم التحديث');
+      } catch (e) {
+        if (!loaded) document.getElementById('catalogBody').innerHTML = '<div class="empty"><i class="fas fa-wifi"></i>تعذر تحميل الخدمات. تأكد من الاتصال وحاول مرة أخرى.<br><br><button class="btn alt" onclick="loadCatalog()">إعادة المحاولة</button></div>';
+        else toast(e.message || 'تعذر التحديث', true);
+      }
+    }
+    function setData(res) {
+      DATA = { categories: res.categories || [], services: res.services || [] };
+      loaded = true;
+      buildIndex();
+      store('yuni_svc_catalog', JSON.stringify(DATA));
+      renderHeader();
+      render();
+    }
+ 
+    // ═══════════════════════════ التنقل ═══════════════════════════
+    function go(path) { if (location.hash.replace(/^#\/?/, '') === path) render(); else location.hash = path ? '#/' + path : ''; }
+    function parseRoute() {
+      const h = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
+      const [a, b] = h.split('/');
+      if (a === 'c' && b) return { page: 'catalog', id: b };
+      if (a === 's' && b) return { page: 'service', id: b };
+      if (a === 'prices') return { page: 'prices', id: '' };
+      if (a === 'manage') return { page: 'manage', id: b || '' };
+      if (a === 'log') return { page: 'log', id: '' };
+      return { page: 'catalog', id: '' };
+    }
+    window.addEventListener('hashchange', () => { route = parseRoute(); render(); window.scrollTo({ top: 0 }); });
+ 
+    function render() {
+      route = parseRoute();
+      if (route.page === 'prices' && !isStaff()) route = { page: 'catalog', id: '' };
+      if ((route.page === 'manage' || route.page === 'log') && !isManager()) route = { page: 'catalog', id: '' };
+      const pageId = route.page === 'prices' ? 'pagePrices' : route.page === 'manage' ? 'pageManage' : route.page === 'log' ? 'pageLog' : 'pageCatalog';
+      document.querySelectorAll('.view-page').forEach(p => p.classList.toggle('active', p.id === pageId));
+      document.getElementById('tabCatalog').classList.toggle('active', pageId === 'pageCatalog');
+      document.getElementById('tabPrices').classList.toggle('active', pageId === 'pagePrices');
+      document.getElementById('tabManage').classList.toggle('active', pageId === 'pageManage');
+      document.getElementById('tabLog').classList.toggle('active', pageId === 'pageLog');
+      if (pageId === 'pageLog') { if (!logOpen) { logOpen = true; loadLog(); } return; }
+      logOpen = false;
+      if (!loaded) return;
+      if (pageId === 'pagePrices') renderPricesPage();
+      else if (pageId === 'pageManage') renderManage();
+      else if (route.page === 'service') renderService(route.id);
+      else renderFolder(route.id);
+    }
+ 
+    function renderHeader() {
+      const bar = document.getElementById('userBar');
+      document.getElementById('navTabs').classList.toggle('show', isStaff());
+      document.getElementById('tabManage').style.display = isManager() ? '' : 'none';
+      document.getElementById('tabLog').style.display = isManager() ? '' : 'none';
+      if (authUser) {
+        bar.innerHTML = '<span class="uname"><i class="fas fa-user-circle"></i> ' + esc(authUser.name) + '</span>'
+          + '<span class="role-badge">' + (isManager() ? 'مدير' : 'موظف') + '</span>'
+          + '<button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> خروج</button>';
+      } else {
+        bar.innerHTML = '<button class="staff-login-btn" onclick="openLogin()"><i class="fas fa-user-lock"></i> دخول الموظفين</button>';
+      }
+    }
+ 
+    // ═══════════════════════════ واجهة العملاء ═══════════════════════════
+    function crumbsHtml(catId, linkPrefix, lastIsLink) {
+      const parts = pathOf(catId);
+      let html = '<a onclick="go(\'' + (linkPrefix === 'manage' ? 'manage' : '') + '\')"><i class="fas fa-home"></i> ' + (linkPrefix === 'manage' ? 'الكل' : 'الرئيسية') + '</a>';
+      parts.forEach((c, i) => {
+        const link = linkPrefix === 'manage' ? 'manage/' + c.id : 'c/' + c.id;
+        html += '<span class="sep"><i class="fas fa-chevron-left"></i></span>';
+        html += (i === parts.length - 1 && !lastIsLink) ? '<span class="current">' + esc(c.name) + '</span>' : '<a onclick="go(\'' + esc(link) + '\')">' + esc(c.name) + '</a>';
+      });
+      return html;
+    }
+ 
+    function folderTile(c) {
+      const m = firstImageForCat(c.id, false);
+      const n = countDeep(c.id, false);
+      return '<a class="tile folder" onclick="go(\'c/' + esc(c.id) + '\')">'
+        + '<div class="tile-media">' + (m ? imgTag(m, 600) : '') + '<div class="ph"><i class="fas fa-spa"></i></div>'
+        + '<div class="tile-title"><b>' + esc(c.name) + '</b><span>' + n + ' خدمة</span></div></div></a>';
+    }
+    function serviceTile(s, showPath) {
+      const m = s.media && s.media[0];
+      return '<a class="tile" onclick="go(\'s/' + esc(s.id) + '\')">'
+        + '<div class="tile-media"><div class="ph"><i class="fas fa-spa"></i></div>' + (m ? imgTag(m, 600) : '')
+        + (m && m.t !== 'image' ? '<span class="play"><i class="fas fa-play"></i></span>' : '') + '</div>'
+        + '<div class="tile-body">' + (showPath ? '<span class="tile-path">' + esc(pathText(s.category)) + '</span>' : '')
+        + '<b>' + esc(s.name) + '</b><span class="tile-price">' + esc(priceText(s.price)) + '</span></div></a>';
+    }
+ 
+    function renderFolder(catId) {
+      const body = document.getElementById('catalogBody');
+      if (catId && (!IDX.cat[catId] || (!isManager() && !IDX.catVisible(catId)))) { body.innerHTML = '<div class="empty"><i class="fas fa-folder-open"></i>القسم غير متاح.<br><br><button class="btn alt" onclick="go(\'\')">الرجوع للرئيسية</button></div>'; return; }
+      const c = IDX.cat[catId];
+      let html = '<div class="page-head"><h2>' + (c ? '<i class="fas fa-folder-open"></i> ' + esc(c.name) : '<i class="fas fa-spa"></i> خدماتنا') + '</h2>'
+        + '<div class="search-box"><i class="fas fa-search"></i><input type="text" id="catalogSearch" placeholder="ابحث عن خدمة..." value="' + esc(catalogSearch) + '" oninput="onCatalogSearch(this.value)"></div></div>';
+      if (c) html += '<div class="crumbs">' + crumbsHtml(catId, '', false) + '</div>';
+      html += '<div id="catalogResults"></div>';
+      body.innerHTML = html;
+      renderFolderResults(catId);
+    }
+    function onCatalogSearch(v) { catalogSearch = v; renderFolderResults(route.id); }
+    function renderFolderResults(catId) {
+      const box = document.getElementById('catalogResults');
+      if (!box) return;
+      const q = catalogSearch.trim().toLowerCase();
+      const c = IDX.cat[catId];
+      if (q) {
+        // البحث جوه المجلد الحالي وكل اللي تحته
+        const scope = catId ? new Set([catId].concat(treeOrder(false).filter(x => pathOf(x.c.id).some(p => p.id === catId)).map(x => x.c.id))) : null;
+        const hits = DATA.services.filter(s => s.active && IDX.catVisible(s.category) && (!scope || scope.has(s.category))
+          && (s.name + ' ' + s.description + ' ' + s.suitable + ' ' + pathText(s.category)).toLowerCase().indexOf(q) !== -1);
+        box.innerHTML = hits.length ? '<div class="grid">' + hits.map(s => serviceTile(s, true)).join('') + '</div>'
+          : '<div class="empty"><i class="fas fa-search"></i>لا توجد نتائج لـ "' + esc(catalogSearch) + '"</div>';
+        return;
+      }
+      const folders = childCats(catId, false);
+      const services = catId ? catServices(catId, false) : [];
+      let html = '';
+      if (c && c.description) html += '<div class="folder-intro">' + esc(c.description) + '</div>';
+      if (folders.length) html += (services.length ? '<div class="section-label"><i class="fas fa-th-large"></i> الأقسام</div>' : '') + '<div class="grid">' + folders.map(folderTile).join('') + '</div>';
+      if (services.length) html += (folders.length ? '<div class="section-label"><i class="fas fa-spa"></i> الخدمات</div>' : '') + '<div class="grid">' + services.map(s => serviceTile(s, false)).join('') + '</div>';
+      if (!folders.length && !services.length) html += '<div class="empty"><i class="fas fa-box-open"></i>' + (catId ? 'لا توجد خدمات في هذا القسم حالياً' : 'لا توجد خدمات حالياً') + '</div>';
+      box.innerHTML = html;
+    }
+ 
+    function renderService(id) {
+      const body = document.getElementById('catalogBody');
+      const s = IDX.svc[id];
+      if (!s || (!isManager() && (!s.active || !IDX.catVisible(s.category)))) { body.innerHTML = '<div class="empty"><i class="fas fa-spa"></i>الخدمة غير متاحة.<br><br><button class="btn alt" onclick="go(\'\')">الرجوع للرئيسية</button></div>'; return; }
+      galleryIndex = 0;
+      let html = '<div class="svc-page"><div class="crumbs">' + crumbsHtml(s.category, '', true) + '</div>';
+      html += '<div class="gallery" id="gallery"></div>';
+      html += '<div class="svc-head"><h1>' + esc(s.name) + '</h1><span class="svc-price' + (isNumericPrice(s.price) ? '' : ' text') + '">' + esc(priceText(s.price)) + '</span></div>';
+      if (s.description) html += '<div class="svc-desc">' + esc(s.description) + '</div>';
+      if (s.suitable) html += '<div class="svc-box suitable"><h3><i class="fas fa-user-check"></i> مناسبة لـ</h3><p>' + esc(s.suitable) + '</p></div>';
+      if (s.notes) html += '<div class="svc-box notes"><h3><i class="fas fa-info-circle"></i> ملاحظات</h3><p>' + esc(s.notes) + '</p></div>';
+      html += '<div class="svc-actions"><button class="btn alt" onclick="go(\'c/' + esc(s.category) + '\')"><i class="fas fa-arrow-right"></i> رجوع</button>'
+        + '<button class="btn alt" onclick="shareService(\'' + esc(s.id) + '\')"><i class="fas fa-share-alt"></i> مشاركة</button>'
+        + (isManager() ? '<button class="btn alt" onclick="openServiceModal(\'' + esc(s.id) + '\')"><i class="fas fa-pen"></i> تعديل</button>' : '')
+        + '</div></div>';
+      body.innerHTML = html;
+      renderGallery(s);
+    }
+ 
+    function renderGallery(s) {
+      const g = document.getElementById('gallery');
+      if (!g) return;
+      const media = s.media || [];
+      if (!media.length) { g.innerHTML = '<div class="stage"><i class="fas fa-spa ph"></i></div>'; return; }
+      const i = Math.max(0, Math.min(galleryIndex, media.length - 1));
+      const m = media[i];
+      let stage;
+      if (m.t === 'image') stage = '<img src="' + esc(driveImg(m.id, 1600)) + '" data-alt="' + esc(driveImgAlt(m.id, 1600)) + '" onerror="imgFail(this)" alt="' + esc(s.name) + '">';
+      else if (m.t === 'video') stage = '<iframe src="https://drive.google.com/file/d/' + encodeURIComponent(m.id) + '/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+      // يوتيوب بيطلب Referer وإلا بيظهر Error 153 — عشان كده referrerpolicy
+      else stage = '<iframe src="https://www.youtube.com/embed/' + encodeURIComponent(m.id) + '?rel=0&playsinline=1" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen title="YouTube"></iframe>'
+        + '<a class="yt-open" href="https://www.youtube.com/watch?v=' + encodeURIComponent(m.id) + '" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> افتح على يوتيوب</a>';
+      let html = '<div class="stage' + (m.t === 'image' ? ' is-img' : '') + '" id="stage">' + stage;
+      if (media.length > 1) {
+        html += '<button class="stage-nav prev" onclick="galleryGo(-1)" aria-label="السابق"><i class="fas fa-chevron-right"></i></button>'
+          + '<button class="stage-nav next" onclick="galleryGo(1)" aria-label="التالي"><i class="fas fa-chevron-left"></i></button>'
+          + '<span class="stage-count">' + (i + 1) + ' / ' + media.length + '</span>';
+      }
+      html += '</div>';
+      if (media.length > 1) {
+        html += '<div class="thumbs">' + media.map((x, k) => '<div class="thumb' + (k === i ? ' active' : '') + '" onclick="galleryGo(0,' + k + ')">'
+          + imgTag(x, 200) + (x.t !== 'image' ? '<i class="fas fa-play"></i>' : '') + '</div>').join('') + '</div>';
+      }
+      g.innerHTML = html;
+      // سحب بالصباع على الموبايل
+      const st = document.getElementById('stage');
+      let x0 = null;
+      st.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+      st.addEventListener('touchend', e => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0; x0 = null;
+        if (Math.abs(dx) > 45) galleryGo(dx > 0 ? 1 : -1);
+      });
+    }
+    function galleryGo(step, to) {
+      const s = IDX.svc[route.id];
+      if (!s) return;
+      const n = (s.media || []).length;
+      galleryIndex = (to !== undefined) ? to : (galleryIndex + step + n) % n;
+      renderGallery(s);
+    }
+    function shareService(id) {
+      const s = IDX.svc[id];
+      const url = location.href.split('#')[0] + '#/s/' + id;
+      if (navigator.share) { navigator.share({ title: s ? s.name : 'Yuni', url: url }).catch(() => {}); return; }
+      copyText(url).then(() => toast('تم نسخ رابط الخدمة'));
+    }
+ 
+    // ═══════════════════════════ قائمة الأسعار (الموظفين) ═══════════════════════════
+    function renderPricesPage() {
+      const sel = document.getElementById('prFolder');
+      const cur = sel.value;
+      sel.innerHTML = '<option value="">كل الخدمات</option>' + treeOrder(false).map(x =>
+        '<option value="' + esc(x.c.id) + '">' + '   '.repeat(x.depth) + esc(x.c.name) + '</option>').join('');
+      sel.value = IDX.catVisible(cur) ? cur : '';
+      renderPrices();
+    }
+    // المجموعات: كل مجلد فيه خدمات مباشرة (بترتيب الشجرة) + خدماته بعد الفلتر
+    function priceGroups() {
+      const folder = document.getElementById('prFolder').value;
+      const q = document.getElementById('prSearch').value.trim().toLowerCase();
+      const groups = [];
+      treeOrder(false).forEach(x => {
+        if (folder && !pathOf(x.c.id).some(p => p.id === folder)) return;
+        const items = catServices(x.c.id, false).filter(s => !q || (s.name + ' ' + pathText(s.category)).toLowerCase().indexOf(q) !== -1);
+        if (items.length) groups.push({ cat: x.c, path: pathText(x.c.id), items });
+      });
+      return groups;
+    }
+    function renderPrices() {
+      const groups = priceGroups();
+      const body = document.getElementById('prBody');
+      let html = '', count = 0;
+      groups.forEach(g => {
+        g.items.forEach(s => {
+          count++;
+          html += '<tr><td class="path-cell">' + esc(g.path) + '</td><td><a style="color:inherit; cursor:pointer;" onclick="go(\'s/' + esc(s.id) + '\')">' + esc(s.name) + '</a><div class="m-path">' + esc(g.path) + '</div></td><td class="price-cell">' + esc(priceText(s.price)) + '</td></tr>';
+        });
+      });
+      body.innerHTML = html || '<tr><td colspan="3" class="empty">لا توجد خدمات مطابقة</td></tr>';
+      document.getElementById('prCount').textContent = count + ' خدمة';
+      document.getElementById('prPreview').textContent = buildPriceMessage(groups) || '—';
+    }
+    function buildPriceMessage(groups) {
+      if (!groups.length) return '';
+      const lines = ['*' + PRICE_MSG_TITLE + '*'];
+      groups.forEach(g => {
+        lines.push('', '*' + g.path + '*');
+        g.items.forEach(s => lines.push('- ' + s.name + ': ' + priceText(s.price)));
+      });
+      return lines.join('\n');
+    }
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise((resolve, reject) => {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy') ? resolve() : reject(); } catch (e) { reject(e); }
+        ta.remove();
+      });
+    }
+    function copyPriceMessage() {
+      const msg = buildPriceMessage(priceGroups());
+      if (!msg) { toast('لا توجد خدمات لنسخها', true); return; }
+      copyText(msg).then(() => toast('تم نسخ الرسالة')).catch(() => toast('تعذر النسخ، انسخ من المعاينة', true));
+    }
+    function sendPriceWhatsApp() {
+      const msg = buildPriceMessage(priceGroups());
+      if (!msg) { toast('لا توجد خدمات لإرسالها', true); return; }
+      window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
+    }
+ 
+    // ═══════════════════════════ الإدارة (المديرين) ═══════════════════════════
+    function renderManage() {
+      const catId = (route.id && IDX.cat[route.id]) ? route.id : '';
+      const c = IDX.cat[catId];
+      document.getElementById('mgCrumbs').innerHTML = crumbsHtml(catId, 'manage', false);
+      const intro = document.getElementById('mgIntro');
+      intro.style.display = c && c.description ? '' : 'none';
+      intro.textContent = c ? c.description : '';
+      const addSvc = document.getElementById('mgAddService');
+      addSvc.disabled = !catId;
+      addSvc.title = catId ? '' : 'افتح مجلد الأول عشان تضيف خدمة جواه';
+      const folders = childCats(catId, true);
+      const services = catId ? catServices(catId, true) : [];
+      let html = '';
+      folders.forEach((f, i) => {
+        const subF = childCats(f.id, true).length, subS = catServices(f.id, true).length;
+        const m = f.cover ? { t: 'image', id: f.cover } : null;
+        html += '<tr class="' + (f.active ? '' : 'is-hidden') + '"><td><div class="mg-row-name"><div class="mg-thumb folder">' + (m ? imgTag(m, 160) : '<i class="fas fa-folder"></i>') + '</div>'
+          + '<div><div class="mg-name" onclick="go(\'manage/' + esc(f.id) + '\')">' + esc(f.name) + '</div><div class="mg-sub">مجلد</div></div></div></td>'
+          + '<td style="color:#6B6655; font-size:13px;">' + subF + ' مجلد · ' + subS + ' خدمة</td>'
+          + '<td>' + (f.active ? '<span style="color:#1A7F4B; font-weight:700; font-size:12px;">ظاهر</span>' : '<span class="hidden-badge">مخفي</span>') + '</td>'
+          + '<td><div class="mg-actions">'
+          + '<button class="icon-btn" title="فتح" onclick="go(\'manage/' + esc(f.id) + '\')"><i class="fas fa-folder-open"></i></button>'
+          + '<button class="icon-btn" title="تعديل" onclick="openCategoryModal(\'' + esc(f.id) + '\')"><i class="fas fa-pen"></i></button>'
+          + '<button class="icon-btn" title="لفوق" ' + (i === 0 ? 'disabled' : '') + ' onclick="moveItem(\'category\',\'' + esc(f.id) + '\',-1)"><i class="fas fa-arrow-up"></i></button>'
+          + '<button class="icon-btn" title="لتحت" ' + (i === folders.length - 1 ? 'disabled' : '') + ' onclick="moveItem(\'category\',\'' + esc(f.id) + '\',1)"><i class="fas fa-arrow-down"></i></button>'
+          + '<button class="icon-btn danger" title="حذف" onclick="deleteCategory(\'' + esc(f.id) + '\')"><i class="fas fa-trash"></i></button>'
+          + '</div></td></tr>';
+      });
+      services.forEach((s, i) => {
+        const m = s.media && s.media[0];
+        html += '<tr class="' + (s.active ? '' : 'is-hidden') + '"><td><div class="mg-row-name"><div class="mg-thumb">' + (m ? imgTag(m, 160) : '<i class="fas fa-spa"></i>') + '</div>'
+          + '<div><div class="mg-name" onclick="openServiceModal(\'' + esc(s.id) + '\')">' + esc(s.name) + '</div><div class="mg-sub">خدمة · ' + (s.media || []).length + ' صورة/فيديو</div></div></div></td>'
+          + '<td class="price-cell">' + esc(priceText(s.price)) + '</td>'
+          + '<td>' + (s.active ? '<span style="color:#1A7F4B; font-weight:700; font-size:12px;">ظاهرة</span>' : '<span class="hidden-badge">مخفية</span>') + '</td>'
+          + '<td><div class="mg-actions">'
+          + '<button class="icon-btn" title="معاينة" onclick="go(\'s/' + esc(s.id) + '\')"><i class="fas fa-eye"></i></button>'
+          + '<button class="icon-btn" title="تعديل" onclick="openServiceModal(\'' + esc(s.id) + '\')"><i class="fas fa-pen"></i></button>'
+          + '<button class="icon-btn" title="لفوق" ' + (i === 0 ? 'disabled' : '') + ' onclick="moveItem(\'service\',\'' + esc(s.id) + '\',-1)"><i class="fas fa-arrow-up"></i></button>'
+          + '<button class="icon-btn" title="لتحت" ' + (i === services.length - 1 ? 'disabled' : '') + ' onclick="moveItem(\'service\',\'' + esc(s.id) + '\',1)"><i class="fas fa-arrow-down"></i></button>'
+          + '<button class="icon-btn danger" title="حذف" onclick="deleteService(\'' + esc(s.id) + '\')"><i class="fas fa-trash"></i></button>'
+          + '</div></td></tr>';
+      });
+      document.getElementById('mgBody').innerHTML = html || '<tr><td colspan="4"><div class="empty"><i class="fas fa-folder-open"></i>'
+        + (catId ? 'المجلد فاضي — أضف مجلد فرعي أو خدمة' : 'ابدأ بإضافة أول مجلد (مثال: SPA أو Laser)') + '</div></td></tr>';
+    }
+ 
+    function folderOptions(selected, excludeId, rootLabel) {
+      let html = rootLabel ? '<option value="">' + esc(rootLabel) + '</option>' : '<option value="">-- اختر المجلد --</option>';
+      treeOrder(true, excludeId).forEach(x => {
+        html += '<option value="' + esc(x.c.id) + '"' + (x.c.id === selected ? ' selected' : '') + '>' + '   '.repeat(x.depth) + esc(x.c.name) + (x.c.active ? '' : ' (مخفي)') + '</option>';
+      });
+      return html;
+    }
+    function showErr(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.style.display = msg ? 'block' : 'none'; }
+    async function runSave(btnId, errId, payload, onDone) {
+      const btn = document.getElementById(btnId);
+      const orig = btn.innerHTML;
+      showErr(errId, '');
+      btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الحفظ...';
+      try {
+        const res = await apiPost(payload);
+        setData(res);
+        if (onDone) onDone(res);
+      } catch (e) {
+        showErr(errId, e.message || 'تعذر الحفظ');
+      } finally {
+        btn.disabled = false; btn.innerHTML = orig;
+      }
+    }
+    async function quickAction(payload, okMsg) {
+      try { const res = await apiPost(payload); setData(res); if (okMsg) toast(okMsg); }
+      catch (e) { toast(e.message || 'حدث خطأ', true); }
+    }
+    function moveItem(kind, id, dir) { quickAction({ action: 'moveItem', kind, id, dir }); }
+    function deleteCategory(id) {
+      const c = IDX.cat[id];
+      if (!c || !confirm('حذف المجلد "' + c.name + '"؟')) return;
+      quickAction({ action: 'deleteCategory', id }, 'تم حذف المجلد');
+    }
+    function deleteService(id) {
+      const s = IDX.svc[id];
+      if (!s || !confirm('حذف الخدمة "' + s.name + '" وكل صورها؟')) return;
+      quickAction({ action: 'deleteService', id }, 'تم حذف الخدمة');
+    }
+ 
+    // ── نافذة المجلد
+    let catEdit = { id: '', cover: '' };
+    function openCategoryModal(id) {
+      const c = id ? IDX.cat[id] : null;
+      catEdit = { id: c ? c.id : '', cover: c ? c.cover : '' };
+      document.getElementById('catModalTitle').innerHTML = '<i class="fas fa-folder" style="color:var(--gold-accent);"></i> ' + (c ? 'تعديل مجلد' : 'مجلد جديد');
+      document.getElementById('catName').value = c ? c.name : '';
+      document.getElementById('catDesc').value = c ? c.description : '';
+      document.getElementById('catActive').checked = c ? c.active : true;
+      const parent = c ? c.parent : (route.page === 'manage' ? route.id : '');
+      document.getElementById('catParent').innerHTML = folderOptions(parent, c ? c.id : null, 'الرئيسية (مجلد رئيسي)');
+      setCatCover(catEdit.cover);
+      showErr('catError', '');
+      openModal('catModal');
+      setTimeout(() => document.getElementById('catName').focus(), 50);
+    }
+    function setCatCover(id) {
+      catEdit.cover = id || '';
+      document.getElementById('catCoverPreview').innerHTML = id ? '<div class="media-item"><div class="ph"><i class="fas fa-image"></i></div>' + imgTag({ t: 'image', id }, 300) + '</div>' : '';
+      document.getElementById('catCoverRemove').style.display = id ? '' : 'none';
+    }
+    async function uploadCatCover(input) {
+      const file = input.files && input.files[0];
+      input.value = '';
+      if (!file) return;
+      const prev = document.getElementById('catCoverPreview');
+      prev.innerHTML = '<div class="media-item uploading"><i class="fas fa-spinner fa-spin"></i> جاري الرفع...</div>';
+      document.getElementById('catSave').disabled = true;
+      try { const m = await uploadFile(file); setCatCover(m.id); }
+      catch (e) { setCatCover(catEdit.cover); showErr('catError', e.message || 'تعذر رفع الصورة'); }
+      finally { document.getElementById('catSave').disabled = false; }
+    }
+    function saveCategory() {
+      const name = document.getElementById('catName').value.trim();
+      if (!name) { showErr('catError', 'يرجى كتابة اسم المجلد.'); return; }
+      runSave('catSave', 'catError', { action: 'saveCategory', data: {
+        id: catEdit.id, name, parent: document.getElementById('catParent').value,
+        description: document.getElementById('catDesc').value, cover: catEdit.cover,
+        active: document.getElementById('catActive').checked
+      } }, () => { closeModal('catModal'); toast('تم حفظ المجلد'); });
+    }
+ 
+    // ── نافذة الخدمة
+    let svcEdit = { id: '', media: [], uploading: 0 };
+    function openServiceModal(id) {
+      const s = id ? IDX.svc[id] : null;
+      svcEdit = { id: s ? s.id : '', media: s ? (s.media || []).map(m => ({ t: m.t, id: m.id })) : [], uploading: 0 };
+      document.getElementById('svcModalTitle').innerHTML = '<i class="fas fa-spa" style="color:var(--gold-accent);"></i> ' + (s ? 'تعديل خدمة' : 'خدمة جديدة');
+      document.getElementById('svcName').value = s ? s.name : '';
+      document.getElementById('svcPrice').value = s ? s.price : '';
+      document.getElementById('svcDesc').value = s ? s.description : '';
+      document.getElementById('svcSuitable').value = s ? s.suitable : '';
+      document.getElementById('svcNotes').value = s ? s.notes : '';
+      document.getElementById('svcActive').checked = s ? s.active : true;
+      document.getElementById('svcYoutube').value = '';
+      document.getElementById('svcCategory').innerHTML = folderOptions(s ? s.category : (route.page === 'manage' ? route.id : ''), null, null);
+      renderSvcMedia();
+      showErr('svcError', '');
+      openModal('svcModal');
+      setTimeout(() => document.getElementById('svcName').focus(), 50);
+    }
+    function renderSvcMedia() {
+      const list = document.getElementById('svcMediaList');
+      let html = svcEdit.media.map((m, i) => '<div class="media-item"><div class="ph"><i class="fas ' + (m.t === 'image' ? 'fa-image' : 'fa-film') + '"></i></div>' + imgTag(m, 300)
+        + (m.t !== 'image' ? '<span class="kind">' + (m.t === 'youtube' ? 'يوتيوب' : 'فيديو') + '</span>' : '')
+        + (i === 0 ? '<span class="cover-tag">الغلاف</span>' : '')
+        + '<div class="tools">'
+        + (i > 0 ? '<button type="button" title="قبل" onclick="moveSvcMedia(' + i + ',-1)"><i class="fas fa-arrow-right"></i></button>' : '')
+        + (i < svcEdit.media.length - 1 ? '<button type="button" title="بعد" onclick="moveSvcMedia(' + i + ',1)"><i class="fas fa-arrow-left"></i></button>' : '')
+        + '<button type="button" class="del" title="حذف" onclick="removeSvcMedia(' + i + ')"><i class="fas fa-times"></i></button></div></div>').join('');
+      for (let k = 0; k < svcEdit.uploading; k++) html += '<div class="media-item uploading"><i class="fas fa-spinner fa-spin"></i> جاري الرفع...</div>';
+      list.innerHTML = html || '<div style="grid-column:1/-1; color:#9A937D; font-size:13px;">لا توجد صور أو فيديوهات بعد.</div>';
+      document.getElementById('svcSave').disabled = svcEdit.uploading > 0;
+    }
+    function moveSvcMedia(i, d) { const a = svcEdit.media, j = i + d; [a[i], a[j]] = [a[j], a[i]]; renderSvcMedia(); }
+    function removeSvcMedia(i) { svcEdit.media.splice(i, 1); renderSvcMedia(); }
+    function addYoutube() {
+      const inp = document.getElementById('svcYoutube');
+      const id = youtubeId(inp.value);
+      if (!id) { showErr('svcError', 'لينك يوتيوب غير صحيح.'); return; }
+      showErr('svcError', '');
+      svcEdit.media.push({ t: 'youtube', id });
+      inp.value = '';
+      renderSvcMedia();
+    }
+    async function uploadServiceMedia(input) {
+      const files = Array.from(input.files || []);
+      input.value = '';
+      showErr('svcError', '');
+      for (const file of files) {
+        svcEdit.uploading++; renderSvcMedia();
+        try { svcEdit.media.push(await uploadFile(file)); }
+        catch (e) { showErr('svcError', file.name + ': ' + (e.message || 'تعذر الرفع')); }
+        finally { svcEdit.uploading--; renderSvcMedia(); }
+      }
+    }
+    function saveService() {
+      const name = document.getElementById('svcName').value.trim();
+      const category = document.getElementById('svcCategory').value;
+      if (!name) { showErr('svcError', 'يرجى كتابة اسم الخدمة.'); return; }
+      if (!category) { showErr('svcError', 'يرجى اختيار المجلد.'); return; }
+      if (svcEdit.uploading) { showErr('svcError', 'استنى لحد ما الرفع يخلص.'); return; }
+      runSave('svcSave', 'svcError', { action: 'saveService', data: {
+        id: svcEdit.id, name, category, price: document.getElementById('svcPrice').value.trim(),
+        description: document.getElementById('svcDesc').value, suitable: document.getElementById('svcSuitable').value,
+        notes: document.getElementById('svcNotes').value, media: svcEdit.media,
+        active: document.getElementById('svcActive').checked
+      } }, () => { closeModal('svcModal'); toast('تم حفظ الخدمة'); });
+    }
+ 
+    // ── رفع الملفات: الصور بتتصغر قبل الرفع، الفيديو لحد MAX_VIDEO_MB
+    function readAsBase64(blob) {
+      return new Promise((resolve, reject) => {
+        const r = new FileReader();
+        r.onload = () => resolve(String(r.result).split(',')[1] || '');
+        r.onerror = () => reject(new Error('تعذر قراءة الملف'));
+        r.readAsDataURL(blob);
+      });
+    }
+    function compressImage(file) {
+      return new Promise(resolve => {
+        if (!/^image\/(jpeg|png|webp)$/i.test(file.type)) { resolve(file); return; }
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = () => {
+          URL.revokeObjectURL(url);
+          const max = 1600, scale = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+          if (scale === 1 && file.size < 600 * 1024) { resolve(file); return; }
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.round(img.naturalWidth * scale); canvas.height = Math.round(img.naturalHeight * scale);
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          canvas.toBlob(b => resolve(b && b.size < file.size ? new File([b], file.name.replace(/\.\w+$/, '') + '.jpg', { type: 'image/jpeg' }) : file), 'image/jpeg', 0.85);
+        };
+        img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+        img.src = url;
+      });
+    }
+    async function uploadFile(file) {
+      const isImage = /^image\//.test(file.type), isVideo = /^video\//.test(file.type);
+      if (!isImage && !isVideo) throw new Error('نوع الملف غير مدعوم');
+      if (isVideo && file.size > MAX_VIDEO_MB * 1024 * 1024) throw new Error('الفيديو أكبر من ' + MAX_VIDEO_MB + ' ميجا — ارفعه على يوتيوب وحط اللينك');
+      const blob = isImage ? await compressImage(file) : file;
+      const data = await readAsBase64(blob);
+      const res = await apiPost({ action: 'uploadMedia', name: blob.name || file.name, mimeType: blob.type || file.type, data });
+      return res.media;
+    }
+ 
+    // ═══════════════════════════ السجل (المديرين) ═══════════════════════════
+    const LOG_ACTIONS = {
+      login: ['تسجيل دخول', 'lg-in'], loginFailed: ['دخول فاشل', 'lg-fail'], logout: ['خروج', ''],
+      addCategory: ['إضافة مجلد', 'lg-add'], editCategory: ['تعديل مجلد', 'lg-edit'], deleteCategory: ['حذف مجلد', 'lg-del'],
+      addService: ['إضافة خدمة', 'lg-add'], editService: ['تعديل خدمة', 'lg-edit'], deleteService: ['حذف خدمة', 'lg-del'],
+      moveItem: ['ترتيب', 'lg-move']
+    };
+    let LOG = [];
+    let logOpen = false;
+    async function loadLog() {
+      const body = document.getElementById('lgBody');
+      body.innerHTML = '<tr><td colspan="4" class="loading"><i class="fas fa-spinner fa-spin"></i> جاري تحميل السجل...</td></tr>';
+      try {
+        const url = SCRIPT_URL + '?action=log&token=' + encodeURIComponent(store('yuni_svc_token') || '') + '&t=' + Date.now();
+        const res = await (await fetch(url)).json();
+        if (res.status !== 'success') throw new Error(res.message || 'تعذر تحميل السجل');
+        LOG = res.log || [];
+        const users = [...new Set(LOG.map(r => r.user).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ar'));
+        const uSel = document.getElementById('lgUser'), uCur = uSel.value;
+        uSel.innerHTML = '<option value="">الكل</option>' + users.map(u => '<option value="' + esc(u) + '">' + esc(u) + '</option>').join('');
+        uSel.value = users.indexOf(uCur) !== -1 ? uCur : '';
+        const aSel = document.getElementById('lgAction'), aCur = aSel.value;
+        aSel.innerHTML = '<option value="">الكل</option>' + Object.keys(LOG_ACTIONS).map(k => '<option value="' + k + '">' + LOG_ACTIONS[k][0] + '</option>').join('');
+        aSel.value = aCur;
+        renderLog();
+      } catch (e) {
+        body.innerHTML = '<tr><td colspan="4" class="empty" style="color:var(--danger);">' + esc(e.message || 'تعذر التحميل') + '</td></tr>';
+      }
+    }
+    function renderLog() {
+      const from = document.getElementById('lgFrom').value, to = document.getElementById('lgTo').value;
+      const user = document.getElementById('lgUser').value, action = document.getElementById('lgAction').value;
+      const q = document.getElementById('lgSearch').value.trim().toLowerCase();
+      const rows = LOG.filter(r => {
+        const d = r.time.substring(0, 10);
+        if (from && d < from) return false;
+        if (to && d > to) return false;
+        if (user && r.user !== user) return false;
+        if (action && r.action !== action) return false;
+        if (q && (r.details + ' ' + r.user).toLowerCase().indexOf(q) === -1) return false;
+        return true;
+      });
+      document.getElementById('lgBody').innerHTML = rows.length ? rows.map(r => {
+        const a = LOG_ACTIONS[r.action] || [r.action, ''];
+        return '<tr><td class="time">' + esc(r.time) + '</td><td><b style="color:var(--primary-green);">' + esc(r.user) + '</b></td>'
+          + '<td><span class="lg-badge ' + a[1] + '">' + esc(a[0]) + '</span></td>'
+          + '<td class="details">' + esc(r.details.replace(/ \| /g, '\n')) + '</td></tr>';
+      }).join('') : '<tr><td colspan="4" class="empty">لا توجد حركات مطابقة</td></tr>';
+      document.getElementById('lgCount').textContent = rows.length + ' حركة' + (LOG.length >= 1000 ? ' — بيظهر آخر 1000 حركة، والباقي موجود في شيت Log' : '');
+    }
+ 
+    // ═══════════════════════════ النوافذ والدخول ═══════════════════════════
+    function openModal(id) { document.getElementById(id).classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active')); });
+ 
+    function openLogin() {
+      showErr('loginError', '');
+      openModal('loginModal');
+      setTimeout(() => document.getElementById('loginUser').focus(), 50);
+    }
+    document.getElementById('loginForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = document.getElementById('loginBtn');
+      showErr('loginError', '');
+      btn.disabled = true; btn.textContent = 'جاري التحقق...';
+      try {
+        const res = await apiPost({ action: 'login', username: document.getElementById('loginUser').value.trim(), password: document.getElementById('loginPass').value });
+        store('yuni_svc_token', res.token);
+        store('yuni_svc_user', JSON.stringify(res.user));
+        authUser = res.user;
+        document.getElementById('loginPass').value = '';
+        closeModal('loginModal');
+        toast('أهلاً ' + res.user.name);
+        renderHeader();
+        await loadCatalog();
+        go(isManager() ? 'manage' : 'prices');
+      } catch (err) {
+        showErr('loginError', err.message || 'تعذر الاتصال بالسيرفر');
+      } finally {
+        btn.disabled = false; btn.textContent = 'دخول';
+      }
+    });
+    function logoutLocal() {
+      authUser = null;
+      store('yuni_svc_token', null); store('yuni_svc_user', null);
+      renderHeader();
+    }
+    async function logout() {
+      try { await apiPost({ action: 'logout' }); } catch (_) {}
+      logoutLocal();
+      go('');
+      loadCatalog();
+    }
+ 
+    // ═══════════════════════════ البداية ═══════════════════════════
+    (function init() {
+      try { authUser = JSON.parse(store('yuni_svc_user') || 'null'); } catch (_) { authUser = null; }
+      if (!store('yuni_svc_token')) authUser = null;
+      renderHeader();
+      route = parseRoute();
+      // عرض آخر نسخة محفوظة فوراً لحد ما البيانات الجديدة توصل
+      try {
+        const cached = JSON.parse(store('yuni_svc_catalog') || 'null');
+        if (cached && Array.isArray(cached.categories)) { DATA = cached; loaded = true; buildIndex(); }
+      } catch (_) {}
+      render();
+      loadCatalog();
+    })();
+  </script>
+</body>
+</html>
+ 
